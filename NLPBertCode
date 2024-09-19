@@ -1,0 +1,56 @@
+# Load model directly
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import os
+
+from transformers import AutoModelForSequenceClassification, AutoTokenizer, pipeline # for using the models
+from google.colab import drive
+drive.mount('/content/drive')
+
+import spacy # for sentence extraction
+from tika import parser # for the report extraction
+
+name = "ESGBERT/EnvironmentalBERT-environmental" # path to download from HuggingFace
+# In simple words, the tokenizer prepares the text for the model and the model classifies the text-
+tokenizer = AutoTokenizer.from_pretrained(name)
+model = AutoModelForSequenceClassification.from_pretrained(name)
+# The pipeline combines tokenizer and model to one process.
+pipe_env = pipeline("text-classification", model=model, tokenizer=tokenizer)
+
+pathstest = []
+for subdir, dir, files in os.walk('/content/drive/My Drive/FIRE198'):
+  for file in files:
+    pathstest.append(os.path.join(subdir, file))
+  pathstest.sort()
+
+  reportsbyyeartest = []
+  for path in pathstest:
+      reportsbyyeartest.append(pd.read_csv(path))
+
+
+
+
+#def classify2(sentences, pip_env):
+#  classifications = pip_env(sentences, padding = True, truncation = True, batch_size = 16)
+#  labels_only = [x["label"] for x in classifications]
+#  df = pd.DataFrame({"text": sentences, "environmental": labels_only})
+#  df_env = df.loc[[df"environmental"] == "environmental"].copy()
+#  classifications_act = pipe_act(df_env.text.to_list(), padding = true, truncation = true, batch_size = 16)
+#  df_all = df.join(df_env[["action"]])
+#  return df_all
+
+#df_my10k = classify2(reportsbyyear[0]['x'].tolist(), pipe_env)
+
+
+ # print(reportsbyyeartest)
+
+  #print(reportsbyyeartest[0].keys())
+
+
+sentiment = []
+for text in reportsbyyeartest[0]['x'].tolist()[:]:
+    sentiment.append(pipe_env(text))
+
+
+filtered_list = [item[0] for item in sentiment if item[0]['label'] == 'environmental']
