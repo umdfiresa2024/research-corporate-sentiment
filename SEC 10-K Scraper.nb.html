@@ -1763,8 +1763,11 @@ library(&#39;xml2&#39;)</code></pre>
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZG9jIDwtIEdFVCgnaHR0cHM6Ly93d3cuc2VjLmdvdi9BcmNoaXZlcy9lZGdhci9kYXRhLzY2NzQwLzAwMDExMDQ2NTkxMjAxMDU2Ni9hMTEtMzEyODBfMTEway5odG0nLGFkZF9oZWFkZXJzKFxuICBcIlVzZXItQWdlbnRcIiA9IFwiTW96aWxsYS81LjAgKFdpbmRvd3MgTlQgMTAuMDsgV2luNjQ7IHg2NCkgQXBwbGVXZWJLaXQvNTM3LjM2IChLSFRNTCwgbGlrZSBHZWNrbykgQ2hyb21lLzkxLjAuNDQ3Mi4xMjQgU2FmYXJpLzUzNy4zNlwiLFxuICBcIkFjY2VwdC1MYW5ndWFnZVwiID0gXCJlbi1VUyxlbjtxPTAuNVwiLFxuICBcIkFjY2VwdFwiID0gXCJ0ZXh0L2h0bWwsYXBwbGljYXRpb24veGh0bWwreG1sLGFwcGxpY2F0aW9uL3htbDtxPTAuOSxpbWFnZS93ZWJwLCovKjtxPTAuOFwiLFxuICBcIkFjY2VwdC1FbmNvZGluZ1wiID0gXCJnemlwLCBkZWZsYXRlLCBiclwiLFxuICBcIlJlZmVyZXJcIiA9IFwiaHR0cHM6Ly93d3cuc2VjLmdvdi9cIixcbiAgXCJDb25uZWN0aW9uXCIgPSBcImtlZXAtYWxpdmVcIixcbiAgXCJETlRcIiA9IFwiMVwiLCAgIyBEbyBOb3QgVHJhY2tcbiAgXCJVcGdyYWRlLUluc2VjdXJlLVJlcXVlc3RzXCIgPSBcIjFcIikpXG5cbmBgYCJ9 -->
-<pre class="r"><code>doc &lt;- GET(&#39;https://www.sec.gov/Archives/edgar/data/66740/000110465912010566/a11-31280_110k.htm&#39;,add_headers(
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuI2l0ZXJhdGlvbiB0aHJvdWdoIGxvb3Agb2YgMSBjb21wYW55IDEwLUtcbmNvbXBfdXJsIDwtICdodHRwczovL3d3dy5zZWMuZ292L0FyY2hpdmVzL2VkZ2FyL2RhdGEvNjY3NDAvMDAwMTEwNDY1OTEyMDEwNTY2L2ExMS0zMTI4MF8xMTBrLmh0bSdcblxuZG9jIDwtIEdFVChjb21wX3VybCxhZGRfaGVhZGVycyhcbiAgXCJVc2VyLUFnZW50XCIgPSBcIk1vemlsbGEvNS4wIChXaW5kb3dzIE5UIDEwLjA7IFdpbjY0OyB4NjQpIEFwcGxlV2ViS2l0LzUzNy4zNiAoS0hUTUwsIGxpa2UgR2Vja28pIENocm9tZS85MS4wLjQ0NzIuMTI0IFNhZmFyaS81MzcuMzZcIixcbiAgXCJBY2NlcHQtTGFuZ3VhZ2VcIiA9IFwiZW4tVVMsZW47cT0wLjVcIixcbiAgXCJBY2NlcHRcIiA9IFwidGV4dC9odG1sLGFwcGxpY2F0aW9uL3hodG1sK3htbCxhcHBsaWNhdGlvbi94bWw7cT0wLjksaW1hZ2Uvd2VicCwqLyo7cT0wLjhcIixcbiAgXCJBY2NlcHQtRW5jb2RpbmdcIiA9IFwiZ3ppcCwgZGVmbGF0ZSwgYnJcIixcbiAgXCJSZWZlcmVyXCIgPSBcImh0dHBzOi8vd3d3LnNlYy5nb3YvXCIsXG4gIFwiQ29ubmVjdGlvblwiID0gXCJrZWVwLWFsaXZlXCIsXG4gIFwiRE5UXCIgPSBcIjFcIiwgICMgRG8gTm90IFRyYWNrXG4gIFwiVXBncmFkZS1JbnNlY3VyZS1SZXF1ZXN0c1wiID0gXCIxXCIpKVxuXG5gYGAifQ== -->
+<pre class="r"><code>#iteration through loop of 1 company 10-K
+comp_url &lt;- &#39;https://www.sec.gov/Archives/edgar/data/66740/000110465912010566/a11-31280_110k.htm&#39;
+
+doc &lt;- GET(comp_url,add_headers(
   &quot;User-Agent&quot; = &quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36&quot;,
   &quot;Accept-Language&quot; = &quot;en-US,en;q=0.5&quot;,
   &quot;Accept&quot; = &quot;text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8&quot;,
@@ -1796,10 +1799,9 @@ library(&#39;xml2&#39;)</code></pre>
 <!-- rnb-output-begin eyJkYXRhIjoiTm8gZW5jb2Rpbmcgc3VwcGxpZWQ6IGRlZmF1bHRpbmcgdG8gVVRGLTguXG4ifQ== -->
 <pre><code>No encoding supplied: defaulting to UTF-8.</code></pre>
 <!-- rnb-output-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiWzFdIFwiVGFibGUgb2YgQ29udGVudHNcIiAgICAgICAgICAgICAgICAgIFwiwqBcIiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIFxuWzNdIFwiwqBcIiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBcIsKgXCIgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBcbls1XSBcIlVOSVRFRCBTVEFURVNcIiAgICAgICAgICAgICAgICAgICAgICBcIlNFQ1VSSVRJRVMgQU5EIEVYQ0hBTkdFIENPTU1JU1NJT05cIlxuIn0= -->
-<pre><code>[1] &quot;Table of Contents&quot;                  &quot; &quot;                                 
-[3] &quot; &quot;                                  &quot; &quot;                                 
-[5] &quot;UNITED STATES&quot;                      &quot;SECURITIES AND EXCHANGE COMMISSION&quot;</code></pre>
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIFwiVGFibGUgb2YgQ29udGVudHNcIiAgICAgICAgICAgICAgICAgIFwiwqBcIiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBcIsKgXCIgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBcbls0XSBcIsKgXCIgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgXCJVTklURUQgU1RBVEVTXCIgICAgICAgICAgICAgICAgICAgICAgXCJTRUNVUklUSUVTIEFORCBFWENIQU5HRSBDT01NSVNTSU9OXCJcbiJ9 -->
+<pre><code>[1] &quot;Table of Contents&quot;                  &quot; &quot;                                  &quot; &quot;                                 
+[4] &quot; &quot;                                  &quot;UNITED STATES&quot;                      &quot;SECURITIES AND EXCHANGE COMMISSION&quot;</code></pre>
 <!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
@@ -1816,16 +1818,26 @@ library(&#39;xml2&#39;)</code></pre>
 paragraphs2 &lt;- parsed_doc %&gt;% html_nodes(&quot;p&quot;) %&gt;% html_text()
 head(paragraphs)</code></pre>
 <!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiWzFdIFwiVGFibGUgb2YgQ29udGVudHNcIiAgICAgICAgICAgICAgICAgIFwiwqBcIiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIFxuWzNdIFwiwqBcIiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBcIsKgXCIgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBcbls1XSBcIlVOSVRFRCBTVEFURVNcIiAgICAgICAgICAgICAgICAgICAgICBcIlNFQ1VSSVRJRVMgQU5EIEVYQ0hBTkdFIENPTU1JU1NJT05cIlxuIn0= -->
-<pre><code>[1] &quot;Table of Contents&quot;                  &quot; &quot;                                 
-[3] &quot; &quot;                                  &quot; &quot;                                 
-[5] &quot;UNITED STATES&quot;                      &quot;SECURITIES AND EXCHANGE COMMISSION&quot;</code></pre>
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIFwiVGFibGUgb2YgQ29udGVudHNcIiAgICAgICAgICAgICAgICAgIFwiwqBcIiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBcIsKgXCIgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBcbls0XSBcIsKgXCIgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgXCJVTklURUQgU1RBVEVTXCIgICAgICAgICAgICAgICAgICAgICAgXCJTRUNVUklUSUVTIEFORCBFWENIQU5HRSBDT01NSVNTSU9OXCJcbiJ9 -->
+<pre><code>[1] &quot;Table of Contents&quot;                  &quot; &quot;                                  &quot; &quot;                                 
+[4] &quot; &quot;                                  &quot;UNITED STATES&quot;                      &quot;SECURITIES AND EXCHANGE COMMISSION&quot;</code></pre>
 <!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxud3JpdGUudChwYXIsIHBhc3RlKFwiSm9zaF9TY3JhcGVkL1wiLCBjb21wX3VybCkpXG5cbmBgYCJ9 -->
+<pre class="r"><code>write.t(par, paste(&quot;Josh_Scraped/&quot;, comp_url))
+</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiRXJyb3I6IHVuZXhwZWN0ZWQgc3ltYm9sIGluOlxuXCJcbndyaXRlLnRcIlxuIn0= -->
+<pre><code>Error: unexpected symbol in:
+&quot;
+write.t&quot;</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
 
-<div id="rmd-source-code">LS0tDQp0aXRsZTogIlIgTm90ZWJvb2siDQpvdXRwdXQ6IGh0bWxfbm90ZWJvb2sNCi0tLQ0KDQpgYGB7cn0NCmxpYnJhcnkoJ3J2ZXN0JykNCmxpYnJhcnkoJ2h0dHInKQ0KbGlicmFyeSgneG1sMicpDQpgYGANCg0KYGBge3J9DQpkb2MgPC0gR0VUKCdodHRwczovL3d3dy5zZWMuZ292L0FyY2hpdmVzL2VkZ2FyL2RhdGEvNjY3NDAvMDAwMTEwNDY1OTEyMDEwNTY2L2ExMS0zMTI4MF8xMTBrLmh0bScsYWRkX2hlYWRlcnMoDQogICJVc2VyLUFnZW50IiA9ICJNb3ppbGxhLzUuMCAoV2luZG93cyBOVCAxMC4wOyBXaW42NDsgeDY0KSBBcHBsZVdlYktpdC81MzcuMzYgKEtIVE1MLCBsaWtlIEdlY2tvKSBDaHJvbWUvOTEuMC40NDcyLjEyNCBTYWZhcmkvNTM3LjM2IiwNCiAgIkFjY2VwdC1MYW5ndWFnZSIgPSAiZW4tVVMsZW47cT0wLjUiLA0KICAiQWNjZXB0IiA9ICJ0ZXh0L2h0bWwsYXBwbGljYXRpb24veGh0bWwreG1sLGFwcGxpY2F0aW9uL3htbDtxPTAuOSxpbWFnZS93ZWJwLCovKjtxPTAuOCIsDQogICJBY2NlcHQtRW5jb2RpbmciID0gImd6aXAsIGRlZmxhdGUsIGJyIiwNCiAgIlJlZmVyZXIiID0gImh0dHBzOi8vd3d3LnNlYy5nb3YvIiwNCiAgIkNvbm5lY3Rpb24iID0gImtlZXAtYWxpdmUiLA0KICAiRE5UIiA9ICIxIiwgICMgRG8gTm90IFRyYWNrDQogICJVcGdyYWRlLUluc2VjdXJlLVJlcXVlc3RzIiA9ICIxIikpDQoNCmBgYA0KDQpgYGB7cn0NCmlmIChzdGF0dXNfY29kZShkb2MpID09IDIwMCkgew0KICAjIFBhcnNlIHRoZSBIVE1MIGNvbnRlbnQNCiAgcGFnZV9jb250ZW50IDwtIHJlYWRfaHRtbChjb250ZW50KGRvYywgYXMgPSAidGV4dCIpKQ0KICANCiAgIyBFeHRyYWN0IHNwZWNpZmljIGVsZW1lbnRzLCBlLmcuLCBwYXJhZ3JhcGhzDQogIHBhcmFncmFwaHMgPC0gcGFnZV9jb250ZW50ICU+JSBodG1sX25vZGVzKCJwIikgJT4lIGh0bWxfdGV4dCgpDQogIA0KICAjIFByaW50IHRoZSBmaXJzdCBmZXcgcGFyYWdyYXBocw0KICBwcmludChoZWFkKHBhcmFncmFwaHMpKQ0KfSBlbHNlIHsNCiAgcHJpbnQocGFzdGUoIkZhaWxlZCB0byByZXRyaWV2ZSBwYWdlLiBTdGF0dXMgY29kZToiLCBzdGF0dXNfY29kZShkb2MpKSkNCn0NCmBgYA0KDQpgYGB7cn0NCnBhcnNlZF9kb2MgPC0gcmVhZF9odG1sKGNvbnRlbnQoZG9jLCBhcyA9ICJ0ZXh0IikpDQojeG1sX3N0cnVjdHVyZShwYXJzZWRfZG9jKSwgbXkgbGFwdG9wIGNhbiBiYXJlbHkgcnVuIHRoaXMNCnBhcmFncmFwaHMyIDwtIHBhcnNlZF9kb2MgJT4lIGh0bWxfbm9kZXMoInAiKSAlPiUgaHRtbF90ZXh0KCkNCmhlYWQocGFyYWdyYXBocykNCmBgYA0KDQo=</div>
+<div id="rmd-source-code">LS0tDQp0aXRsZTogIlIgTm90ZWJvb2siDQpvdXRwdXQ6IGh0bWxfbm90ZWJvb2sNCi0tLQ0KDQpgYGB7cn0NCmxpYnJhcnkoJ3J2ZXN0JykNCmxpYnJhcnkoJ2h0dHInKQ0KbGlicmFyeSgneG1sMicpDQpgYGANCg0KYGBge3J9DQojaXRlcmF0aW9uIHRocm91Z2ggbG9vcCBvZiAxIGNvbXBhbnkgMTAtSw0KY29tcF91cmwgPC0gJ2h0dHBzOi8vd3d3LnNlYy5nb3YvQXJjaGl2ZXMvZWRnYXIvZGF0YS82Njc0MC8wMDAxMTA0NjU5MTIwMTA1NjYvYTExLTMxMjgwXzExMGsuaHRtJw0KDQpkb2MgPC0gR0VUKGNvbXBfdXJsLGFkZF9oZWFkZXJzKA0KICAiVXNlci1BZ2VudCIgPSAiTW96aWxsYS81LjAgKFdpbmRvd3MgTlQgMTAuMDsgV2luNjQ7IHg2NCkgQXBwbGVXZWJLaXQvNTM3LjM2IChLSFRNTCwgbGlrZSBHZWNrbykgQ2hyb21lLzkxLjAuNDQ3Mi4xMjQgU2FmYXJpLzUzNy4zNiIsDQogICJBY2NlcHQtTGFuZ3VhZ2UiID0gImVuLVVTLGVuO3E9MC41IiwNCiAgIkFjY2VwdCIgPSAidGV4dC9odG1sLGFwcGxpY2F0aW9uL3hodG1sK3htbCxhcHBsaWNhdGlvbi94bWw7cT0wLjksaW1hZ2Uvd2VicCwqLyo7cT0wLjgiLA0KICAiQWNjZXB0LUVuY29kaW5nIiA9ICJnemlwLCBkZWZsYXRlLCBiciIsDQogICJSZWZlcmVyIiA9ICJodHRwczovL3d3dy5zZWMuZ292LyIsDQogICJDb25uZWN0aW9uIiA9ICJrZWVwLWFsaXZlIiwNCiAgIkROVCIgPSAiMSIsICAjIERvIE5vdCBUcmFjaw0KICAiVXBncmFkZS1JbnNlY3VyZS1SZXF1ZXN0cyIgPSAiMSIpKQ0KDQpgYGANCg0KYGBge3J9DQppZiAoc3RhdHVzX2NvZGUoZG9jKSA9PSAyMDApIHsNCiAgIyBQYXJzZSB0aGUgSFRNTCBjb250ZW50DQogIHBhZ2VfY29udGVudCA8LSByZWFkX2h0bWwoY29udGVudChkb2MsIGFzID0gInRleHQiKSkNCiAgDQogICMgRXh0cmFjdCBzcGVjaWZpYyBlbGVtZW50cywgZS5nLiwgcGFyYWdyYXBocw0KICBwYXJhZ3JhcGhzIDwtIHBhZ2VfY29udGVudCAlPiUgaHRtbF9ub2RlcygicCIpICU+JSBodG1sX3RleHQoKQ0KICANCiAgIyBQcmludCB0aGUgZmlyc3QgZmV3IHBhcmFncmFwaHMNCiAgcHJpbnQoaGVhZChwYXJhZ3JhcGhzKSkNCn0gZWxzZSB7DQogIHByaW50KHBhc3RlKCJGYWlsZWQgdG8gcmV0cmlldmUgcGFnZS4gU3RhdHVzIGNvZGU6Iiwgc3RhdHVzX2NvZGUoZG9jKSkpDQp9DQpgYGANCg0KYGBge3J9DQpwYXJzZWRfZG9jIDwtIHJlYWRfaHRtbChjb250ZW50KGRvYywgYXMgPSAidGV4dCIpKQ0KI3htbF9zdHJ1Y3R1cmUocGFyc2VkX2RvYyksIG15IGxhcHRvcCBjYW4gYmFyZWx5IHJ1biB0aGlzDQpwYXJhZ3JhcGhzMiA8LSBwYXJzZWRfZG9jICU+JSBodG1sX25vZGVzKCJwIikgJT4lIGh0bWxfdGV4dCgpDQpoZWFkKHBhcmFncmFwaHMpDQpgYGANCg0KYGBge3J9DQpsaWJyYXJ5KCJ0aWR5dmVyc2UiKQ0KDQpwYXI8LWMoKQ0KDQojZm9yIChpIGluIDE6bGVuZ3RoKHBhcmFncmFwaHMyKSkgew0KI2ZvciAoaSBpbiAxOjEwMCkgew0KICBwcmludChpKQ0KICB0ZW1wPC11bmxpc3Qoc3RyX3NwbGl0KHBhcmFncmFwaHMyW2ldLCAiXFwuIikpDQogIHBhcjwtcmJpbmQocGFyLHRlbXApDQp9DQoNCndyaXRlLnQocGFyLCBwYXN0ZSgiSm9zaF9TY3JhcGVkLyIsIGNvbXBfdXJsKSkNCmBgYA0K</div>
 
 
 
