@@ -1,0 +1,46 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+```{r}
+library('rvest')
+library('httr')
+library('xml2')
+```
+
+```{r}
+doc <- GET('https://www.sec.gov/Archives/edgar/data/66740/000110465912010566/a11-31280_110k.htm',add_headers(
+  "User-Agent" = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36",
+  "Accept-Language" = "en-US,en;q=0.5",
+  "Accept" = "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8",
+  "Accept-Encoding" = "gzip, deflate, br",
+  "Referer" = "https://www.sec.gov/",
+  "Connection" = "keep-alive",
+  "DNT" = "1",  # Do Not Track
+  "Upgrade-Insecure-Requests" = "1"))
+
+```
+
+```{r}
+if (status_code(doc) == 200) {
+  # Parse the HTML content
+  page_content <- read_html(content(doc, as = "text"))
+  
+  # Extract specific elements, e.g., paragraphs
+  paragraphs <- page_content %>% html_nodes("p") %>% html_text()
+  
+  # Print the first few paragraphs
+  print(head(paragraphs))
+} else {
+  print(paste("Failed to retrieve page. Status code:", status_code(doc)))
+}
+```
+
+```{r}
+parsed_doc <- read_html(content(doc, as = "text"))
+#xml_structure(parsed_doc), my laptop can barely run this
+paragraphs2 <- parsed_doc %>% html_nodes("p") %>% html_text()
+head(paragraphs)
+```
+
