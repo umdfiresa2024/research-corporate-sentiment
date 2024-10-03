@@ -1,7 +1,7 @@
-install.packages("xml2")
+
 library("xml2")
-library(httr)
-library(XBRL)
+library("httr")
+library("XBRL")
 library("tidyverse")
 
 options(HTTPUserAgent = "tjones77@terpmail.umd")
@@ -91,16 +91,4 @@ p2<-p %>%
   mutate(charlength=nchar(V1)) %>%
   mutate(first=substr(V1, 1, 1)) %>%
   filter(str_detect(first, "^[A-Z]"))
-################################
-textfile<-str_split(paragraphs,
-                    "\n", 
-                    simplify = TRUE)
 
-p_<-as.data.frame(t(textfile))
-
-test_p3 <- c('invalid sentence', 'Valid sentence','(Invalid sentence)','!Invalid sentence')
-
-
-p3 <- p2 %>%
-  mutate(is_valid_sentence = sapply(sentences, is_sentence))
-  
