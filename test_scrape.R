@@ -1,0 +1,106 @@
+install.packages("xml2")
+library("xml2")
+library(httr)
+library(XBRL)
+library("tidyverse")
+
+options(HTTPUserAgent = "tjones77@terpmail.umd")
+info.df <- AnnualReports("GOOG")
+
+symbol<-"AAPL"
+
+url <- paste0("http://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=", 
+              symbol, "&type=10-k&dateb=&owner=exclude&count=100")
+
+filings <- xml2::read_html(url)
+
+#extract information of filing name
+filing.name <-
+  filings %>%
+  rvest::html_nodes("#seriesDiv td:nth-child(1)") %>%
+  rvest::html_text()
+
+##   Acquire filing date
+filing.date <-
+  filings %>%
+  rvest::html_nodes(".small+ td") %>%
+  rvest::html_text()
+
+##   Acquire accession number
+accession.no.raw <-
+  filings %>%
+  rvest::html_nodes(".small") %>%
+  rvest::html_text()
+
+accession.no <-
+  gsub("^.*Acc-no: ", "", accession.no.raw) %>%
+  substr(1, 20)
+
+##   Create dataframe
+info.df <- data.frame(filing.name = filing.name, filing.date = filing.date, 
+                      accession.no = accession.no)
+
+# Create a directory to store the annual reports
+dir_name <- paste0(symbol, "_AnnualReports")
+dir.create(dir_name, showWarnings = FALSE)
+
+for (i in 1:length(info.df$filing.name)) {
+  
+  if(trimws(info.df$filing.name[i]) == "10-K/A") { #skip if it is 10-K/a
+    next
+  }
+  path <- paste0("tr:nth-child(", i + 1 , ") td:nth-child(2) a")
+  
+  urlToZipPath  <- filings %>%
+    rvest::html_node(path) %>%
+    rvest::html_attr("href")
+  
+  converted_string <- sub("\\index.htm$", "xbrl.zip", urlToZipPath)
+  
+  if(str_sub(converted_string, start = tail(unlist(gregexpr('\\.', converted_string)), n=1)+1) == "html"){
+    converted_string = sub("\\-index.html$", ".txt", urlToZipPath)
+  }
+  
+  report_url <- paste0("https://www.sec.gov", converted_string)
+  file_name <- str_sub(converted_string, start = tail(unlist(gregexpr('/', converted_string)), n=1)+1)
+  dest <- paste0(dir_name,"/",file_name)
+
+expr = {
+  download.file(report_url, dest, mode = "wb")
+}
+}
+
+################################33
+
+d<-dir("AAPL_AnnualReports", pattern=".txt")
+
+
+page_content<-read_html(paste0("AAPL_AnnualReports/", d[1]), as="text")
+
+paragraphs<-page_content %>%
+  rvest::html_nodes("p") %>%
+  rvest::html_text()
+
+#####################################
+textfile<-str_split(paragraphs,
+                           "(?<!\\b(?:Mrs|Mr|Dr|Inc|Ms|Ltd|No|[A-Z])\\.)(?<=\\.|\\?|!)\\s+", 
+                           simplify = TRUE)
+p<-as.data.frame(t(textfile))
+
+p2<-p %>%
+  mutate(charlength=nchar(V1)) %>%
+  mutate(first=substr(V1, 1, 1)) %>%
+  filter(str_detect(first, "^[A-Z]"))
+################################
+textfile<-str_split(paragraphs,
+                    "\n", 
+                    simplify = TRUE)
+
+p_<-as.data.frame(t(textfile))
+
+test_p3 <- c('invalid sentence', 'Valid sentence','(Invalid sentence)','!Invalid sentence')
+
+
+p3 <- p2 %>%
+  mutate(is_valid_sentence = sapply(sentences, is_sentence))
+  
