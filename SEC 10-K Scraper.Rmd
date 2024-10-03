@@ -52,12 +52,12 @@ library("tidyverse")
 
 par<-c()
 
-#for (i in 1:length(paragraphs2)) {
+for (i in 1:length(paragraphs)) {
 #for (i in 1:100) {
   print(i)
-  temp<-unlist(str_split(paragraphs2[i], "\\."))
+  temp<-unlist(str_split(paragraphs[i], "\\."))
   par<-rbind(par,temp)
+  #}
 }
-
-write.t(par, paste("Josh_Scraped/", comp_url))
+write.csv(par, 'Sample_EDGAR_Data.csv')
 ```
