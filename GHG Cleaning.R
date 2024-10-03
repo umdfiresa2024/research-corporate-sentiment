@@ -34,6 +34,10 @@ data_long <- new_data %>%
 data_long <- data_long %>%
   mutate(percentage = str_extract(`PARENT COMPANY`, "\\d+(\\.\\d+)?%")) 
 
+data_long <- data_long %>%
+  mutate(percentage = str_extract(`PARENT COMPANY`, "\\d+(\\.\\d+)?%"),
+         `PARENT COMPANY` = str_remove(`PARENT COMPANY`, "\\s*\\(\\d+(\\.\\d+)?%\\)"))
+
 # Convert percentage to numeric
 data_long <- data_long %>%
   mutate(numeric_percentage = as.numeric(gsub("%", "", percentage)) / 100)
@@ -55,3 +59,7 @@ data_summary <- data_long %>%
 
 # View the summarized result
 print(data_summary)
+
+write.csv(data_summary, "cleanedflight.csv")
+companies<-unique(data_summary$`PARENT COMPANY`)
+write.csv(companies, "companylist.csv")
