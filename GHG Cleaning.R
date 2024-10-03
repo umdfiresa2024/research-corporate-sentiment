@@ -55,3 +55,5 @@ data_summary <- data_long %>%
 
 # View the summarized result
 print(data_summary)
+
+write.csv(data_summary, "data_summary.csv", row.names=F)
