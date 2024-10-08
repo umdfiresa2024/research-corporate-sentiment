@@ -7,7 +7,7 @@ library("tidyverse")
 options(HTTPUserAgent = "tjones77@terpmail.umd")
 info.df <- AnnualReports("GOOG")
 
-symbol<-"AAPL"
+symbol<-"CETY"
 
 url <- paste0("http://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=", 
               symbol, "&type=10-k&dateb=&owner=exclude&count=100")
@@ -55,7 +55,7 @@ for (i in 1:length(info.df$filing.name)) {
     rvest::html_node(path) %>%
     rvest::html_attr("href")
   
-  converted_string <- sub("\\index.htm$", "xbrl.zip", urlToZipPath)
+  converted_string <- sub("\\-index.htm$", ".txt", urlToZipPath)
   
   if(str_sub(converted_string, start = tail(unlist(gregexpr('\\.', converted_string)), n=1)+1) == "html"){
     converted_string = sub("\\-index.html$", ".txt", urlToZipPath)
@@ -72,10 +72,10 @@ expr = {
 
 ################################33
 
-d<-dir("AAPL_AnnualReports", pattern=".txt")
+d<-dir(paste0(symbol,"_AnnualReports"), pattern=".txt")
 
 
-page_content<-read_html(paste0("AAPL_AnnualReports/", d[1]), as="text")
+page_content<-read_html(paste0(symbol,"_AnnualReports/", d[1]), as="text")
 
 paragraphs<-page_content %>%
   rvest::html_nodes("p") %>%
