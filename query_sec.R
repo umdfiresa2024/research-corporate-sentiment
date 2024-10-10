@@ -2,16 +2,27 @@ library("httr")
 library("jsonlite")
 library("tidyverse")
 
-df<-read.csv("companylist.csv") %>%
-  mutate(x=str_remove(x, "LLC")) %>%
-  mutate(x=str_remove(x, "Inc.")) %>%
-  mutate(x=str_remove(x, "Inc")) %>%
-  mutate(x=str_remove(x, "INC")) %>%
-  mutate(x=str_remove(x, "LTD")) %>%
-  mutate(x=trimws(x, "both"))
+df<-read.csv("companylist.csv")  %>%
+  filter(x!="") %>%
+  mutate(x2=str_remove(x, "LLC")) %>%
+  mutate(x2=str_remove(x2, "Inc.")) %>%
+  mutate(x2=str_remove(x2, "Inc")) %>%
+  mutate(x2=str_remove(x2, "INC")) %>%
+  mutate(x2=str_remove(x2, "LTD")) %>%
+  mutate(x2=str_remove(x2, "\\,")) %>%
+  mutate(x2=str_remove(x2, "\\.")) %>%
+  mutate(x2=str_replace_all(x2, "\\&", "AND")) %>%
+  mutate(x2=tolower(x2)) %>%
+  mutate(x2=trimws(x2, "both")) 
 
-comp<-df$x
+df2<-df %>%
+  group_by(x2) %>%
+  tally()
+  
 
+comp<-df2$x2
+
+#example of query
 i<-2
 name<- comp[i]
 api<-"67f15f74f937e7f6376252601326b292d0002f7e51431616c2b3a5384329c981"
@@ -19,8 +30,10 @@ url<-paste0("https://api.sec-api.io/mapping/name/", name, "?token=", api)
 
 filename<-"sec_api/file.json"
 GET(url,write_disk(filename, overwrite = TRUE))
-
 data <- fromJSON("sec_api/file.json", simplifyVector = TRUE)
+data2<-data %>%
+  filter(ticker!="")
+ticker <- data2$ticker[1]
 
 get_sec <- function(i) {
   tryCatch(
@@ -59,7 +72,7 @@ get_sec <- function(i) {
 
 tickers <- c()
 #for (i in 2:length(comp)) {
-for (i in 2:5) {
+for (i in 2:10) {
   print(i)
   ticker <- get_sec(i)
   tickers<-rbind(tickers, ticker)
