@@ -26,6 +26,7 @@ doc <- GET(comp_url,add_headers(
 ```
 
 ```{r}
+
 if (status_code(doc) == 200) {
   # Parse the HTML content
   page_content <- read_html(content(doc, as = "text"))

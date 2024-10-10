@@ -71,11 +71,15 @@ expr = {
 }
 
 ################################33
-
+head(d)
 d<-dir(paste0(symbol,"_AnnualReports"), pattern=".txt")
+dir.create(paste0(symbol, '_ScrapedAnnualReports'))
 
 
-page_content<-read_html(paste0(symbol,"_AnnualReports/", d[1]), as="text")
+
+for(i in 1:length(d)){
+
+page_content<-read_html(raw_content_cleaned, as="text", options = c('HUGE','RECOVER'))
 
 paragraphs<-page_content %>%
   rvest::html_nodes("p") %>%
@@ -84,11 +88,31 @@ paragraphs<-page_content %>%
 #####################################
 textfile<-str_split(paragraphs,
                            "(?<!\\b(?:Mrs|Mr|Dr|Inc|Ms|Ltd|No|[A-Z])\\.)(?<=\\.|\\?|!)\\s+", 
-                           simplify = TRUE)
-p<-as.data.frame(t(textfile))
+                           simplify = TRUE) 
+
+
+
+# Weird issue occurred where textfile created matrix where the first obs had many variables and columns
+# Used paste*() to bind all columns, but paste returns a character so matrix() is used to restore matrix
+# textfile is now one matrix that is one column, changed p <- as.data.frame(t(textfile)) as transpose is no longer necessary
+textfile <- matrix(paste(textfile))
+p<-as.data.frame(textfile)
+
 
 p2<-p %>%
   mutate(charlength=nchar(V1)) %>%
   mutate(first=substr(V1, 1, 1)) %>%
-  filter(str_detect(first, "^[A-Z]"))
+  filter(str_detect(first, "^[A-Z]")) %>%
+  mutate("White spaces" = str_count(V1, " ")) %>%
+  mutate("Non-breaking space character" = str_count(V1, "\u00A0"))
+
+p3<-p2 %>%
+  filter(`Non-breaking space character`<20)%>%
+  filter(`charlength` > 30 & str_ends(V1,"\\."))
+
+filename<-str_split(d[i], "-",simplify=TRUE)[1,2]
+
+write.csv(p3, paste0(symbol,"_ScrapedAnnualReports/year_", filename, ".csv"))
+
+}
 
