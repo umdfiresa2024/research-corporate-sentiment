@@ -3,13 +3,13 @@ library('data.table')
 library('rvest')
 library('httr')
 library('htmltidy')
-
-symbol<-c("CETY", "AAPL")
+symbol_table <- as.data.frame(read.csv('unique_tickers_only.csv'))
+symbol<-read.csv('unique_tickers_only.csv', header = TRUE)
 
 for (i in 1:length(symbol)) {
 
 url <- paste0("http://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=", 
-              symbol[i], "&type=10-k&dateb=&owner=exclude&count=100")
+              symbol$Ticker[i], "&type=10-k&dateb=&owner=exclude&count=100")
 
 # Scrape filing page identfier numbers
 response <- GET(url,add_headers(
@@ -109,7 +109,7 @@ aapl_href <-
 
 # Show first 5 hrefs
 aapl_href[1:5]
-dir.create('AAPL_Scraped_Parsed')
+#dir.create('AAPL_Scraped_Parsed')
 
 for( i in length(aapl_href)){
   response <- GET(aapl_href[i],add_headers(
@@ -152,6 +152,6 @@ for( i in length(aapl_href)){
   filename <- unlist(str_split(names(aapl_href[i]), "-"))[2]
   write.csv(p3, 
             paste0("G:/Shared drives/2024 FIRE-SA/DATA/Companies_Scraped/", 
-                       symbol[i], "_", filename, ".csv"))
+                       symbol$Ticker[i], "_", filename, ".csv"))
 }
 }
