@@ -2,7 +2,7 @@ library('tidyverse')
 library('data.table')
 library('rvest')
 library('httr')
-
+library('htmltidy')
 
 url <- 
   "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0000320193&type=10-K&dateb=1990&owner=exclude&count=25"
@@ -105,3 +105,42 @@ aapl_href <-
 
 # Show first 5 hrefs
 aapl_href[1:5]
+
+for( i in length(aapl_href)){
+  response <- GET(aapl_href[i],add_headers(
+    "User-Agent" = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36",
+    "Accept-Language" = "en-US,en;q=0.5",
+    "Accept" = "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8",
+    "Accept-Encoding" = "gzip, deflate, br",
+    "Referer" = "https://www.sec.gov/",
+    "Connection" = "keep-alive",
+    "DNT" = "1",  # Do Not Track
+    "Upgrade-Insecure-Requests" = "1"))
+  
+  doc <- tidy_html(content(response))
+  doc <- read_html(response)
+  doc <- tidy_html(response)
+  doc <- tidy_html(aapl_href[i])
+  
+  # Using read_html(response)
+  paragraphs<-doc %>%
+    rvest::html_nodes("p") %>%
+    rvest::html_text()
+  
+  textfile<-str_split(paragraphs,
+                      "(?<!\\b(?:Mrs|Mr|Dr|Inc|Ms|Ltd|No|[A-Z])\\.)(?<=\\.|\\?|!)\\s+", 
+                      simplify = TRUE) 
+  textfile <- matrix(paste(textfile))
+  p<-as.data.frame(textfile)
+  
+  p2<-p %>%
+    mutate(charlength=nchar(V1)) %>%
+    mutate(first=substr(V1, 1, 1)) %>%
+    filter(str_detect(first, "^[A-Z]")) %>%
+    mutate("White spaces" = str_count(V1, " ")) %>%
+    mutate("Non-breaking space character" = str_count(V1, "\u00A0"))
+  
+  p3<-p2 %>%
+    filter(`Non-breaking space character`<20)%>%
+    filter(`charlength` > 30 & str_ends(V1,"\\."))
+}
