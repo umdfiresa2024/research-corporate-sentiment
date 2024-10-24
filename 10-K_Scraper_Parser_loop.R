@@ -29,7 +29,7 @@ if (status_code(response) == 200) {
     as.data.table() %>%
     janitor::clean_names()
 } else {
-  print(paste("Failed to retrieve page. Status code:", status_code(doc)))
+  print(paste("Failed to retrieve 1st Response page. Status code:", status_code(doc)))
 }
 
 # Drop pre XBRL filings
@@ -81,7 +81,7 @@ aapl_href <-
         xml_nodes('.tableFile') %>%
         html_table()
     } else {
-      print(paste("Failed to retrieve page. Status code:", status_code(doc)))
+      print(paste("Failed to retrieve 2nd Response page. Status code:", status_code(response)))
     }
 
     # Extract document 
@@ -122,8 +122,13 @@ for( i in length(aapl_href)){
     "DNT" = "1",  # Do Not Track
     "Upgrade-Insecure-Requests" = "1"))
   
-
-  doc <- read_html(response)
+  if (status_code(response) == 200) {
+    # Table of XBRL Documents
+    doc <- read_html(response)
+    
+  } else {
+    print(paste("Failed to retrieve Response3 page. Status code:", status_code(response)))
+  }
 
   
   # Using read_html(response)
