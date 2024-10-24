@@ -105,6 +105,7 @@ aapl_href <-
 
 # Show first 5 hrefs
 aapl_href[1:5]
+dir.create('AAPL_Scraped_Parsed')
 
 for( i in length(aapl_href)){
   response <- GET(aapl_href[i],add_headers(
@@ -117,10 +118,9 @@ for( i in length(aapl_href)){
     "DNT" = "1",  # Do Not Track
     "Upgrade-Insecure-Requests" = "1"))
   
-  doc <- tidy_html(content(response))
+
   doc <- read_html(response)
-  doc <- tidy_html(response)
-  doc <- tidy_html(aapl_href[i])
+
   
   # Using read_html(response)
   paragraphs<-doc %>%
@@ -143,4 +143,6 @@ for( i in length(aapl_href)){
   p3<-p2 %>%
     filter(`Non-breaking space character`<20)%>%
     filter(`charlength` > 30 & str_ends(V1,"\\."))
+  filename <- 
+  write.csv(p3, paste0('AAPL_Scraped_Parsed/', filename, '.csv'))
 }
