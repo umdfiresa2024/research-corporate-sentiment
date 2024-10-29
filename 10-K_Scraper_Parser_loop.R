@@ -22,6 +22,17 @@ response <- GET(url,add_headers(
   "DNT" = "1",  # Do Not Track
   "Upgrade-Insecure-Requests" = "1"))
 if (status_code(response) == 200) {
+  company_info <- 
+    read_html(response) %>%
+    html_nodes(xpath='//*[@id="contentDiv"]/div[1]/div[3]/span/a')
+  #html_table() %>%
+  #as.data.table() %>%
+  #janitor::clean_names()
+  cik_number <- sub(".*CIK=(\\d{10}).*", "\\1", company_info)
+} else {
+  print(paste("Failed to retrieve 1st Response page. Status code:", status_code(doc)))
+}
+if (status_code(response) == 200) {
   filings <- 
     read_html(response) %>%
     html_nodes(xpath='//*[@id="seriesDiv"]/table') %>%
@@ -48,7 +59,7 @@ urls <-
     # Rebuild URL to match Edgar format
     url <- 
       paste0(
-        "https://www.sec.gov/Archives/edgar/data/320193/",
+        "https://www.sec.gov/Archives/edgar/data/",cik_number,"/",
         paste0(
           str_remove_all(filing, "-"),"/"),
         paste0(
