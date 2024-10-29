@@ -171,3 +171,4 @@ for( j in 1:length(aapl_href)){
                        symbol$Ticker[i], "_", filename, ".csv"))
 }
 }
+
