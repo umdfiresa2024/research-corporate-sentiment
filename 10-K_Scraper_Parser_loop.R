@@ -6,7 +6,7 @@ library('htmltidy')
 symbol_table <- as.data.frame(read.csv('unique_tickers_only.csv'))
 symbol<-read.csv('unique_tickers_only.csv', header = TRUE)
 
-for (i in 1:length(symbol)) {
+for (i in 1:nrow(symbol)) {
 
 url <- paste0("http://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=", 
               symbol$Ticker[i], "&type=10-k&dateb=&owner=exclude&count=100")
@@ -122,7 +122,7 @@ aapl_href <-
 #aapl_href[1:5]
 #dir.create('AAPL_Scraped_Parsed')
 
-for( j in length(aapl_href)){
+for( j in 1:length(aapl_href)){
   response <- GET(aapl_href[j],add_headers(
     "User-Agent" = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36",
     "Accept-Language" = "en-US,en;q=0.5",
