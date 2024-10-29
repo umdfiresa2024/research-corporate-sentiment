@@ -110,7 +110,7 @@ p3<-p2 %>%
   filter(`Non-breaking space character`<20)%>%
   filter(`charlength` > 30 & str_ends(V1,"\\."))
 
-filename<-str_split(d[i], "-",simplify=TRUE)[1,2]
+filename<-str_split(aapl_href[i], "-",simplify=TRUE)[1,2]
 
 write.csv(p3, paste0(symbol,"_ScrapedAnnualReports/year_", filename, ".csv"))
 
