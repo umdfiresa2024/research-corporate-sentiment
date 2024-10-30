@@ -118,6 +118,9 @@ aapl_href <-
     
   })
 
+
+aapl_href <- lapply(aapl_href, function(x) x[str_detect(x, "htm$")])
+aapl_href <- aapl_href[sapply(aapl_href, length) > 0]
 # Show first 5 hrefs
 #aapl_href[1:5]
 #dir.create('AAPL_Scraped_Parsed')
