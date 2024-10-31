@@ -24,7 +24,7 @@ chat.name <-stri_encode(chat.name, "","UTF-8")
 #chat=nyse
 flight_output <- c()
 #for(i in 2:dim(flight.name)[1]) {
-for (i in 2:100) {
+for (i in 2:dim(flight.name)[1]) {
   print(i)
   
   distmatrix <- stringdist::stringdistmatrix(flight.name[i,1], 
@@ -39,10 +39,38 @@ for (i in 2:100) {
   flight_output<-rbind(flight_output, output)
 }
 
+write.csv(flight_output, "match_flight1.csv")
 
-df<-read.csv("cleanedflight.csv")
-#merge flight.name to df
-merged <- merge(flight.name, df, by.x = "chat.name", by.y = "PARENT.COMPANY")
+flight_output <- c()
+#for(i in 2:dim(flight.name)[1]) {
+for (i in 7033:dim(flight.name)[1]) {
+  print(i)
+  
+  distmatrix <- stringdist::stringdistmatrix(flight.name[i,1], 
+                                             chat.name[1:2578], 
+                                             method = 'lcs', p = 0.1)
+  
+  best_fit <- apply(distmatrix, 1, which.min)
+  similarity <- apply(distmatrix, 1, min)
+  output<-as.data.frame(cbind(flight.name[i,1], 
+                              chat.name[best_fit], 
+                              round(similarity,3)))
+  flight_output<-rbind(flight_output, output)
+}
+
+install.packages("plyr")
+library("plyr")
+df<-read.csv("match_flight1.csv")
+f<-as.data.frame(rbind.fill(df, flight_output)) |>
+  filter(V3==0) |>
+  dplyr::select(V1, V2)
+
+names(f)<-c("flight", "company")
+
+merged <- merge(f, chat, by = "company")
+
+tick<-unique(merged$ticker)
+
 grouped_merge <- merged %>% 
   group_by(ticker, year) %>%
   summarize(GHG=sum(GHG))
