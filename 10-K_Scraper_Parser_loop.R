@@ -6,7 +6,7 @@ library('htmltidy')
 symbol_table <- as.data.frame(read.csv('unique_tickers_only.csv'))
 symbol<-read.csv('unique_tickers_only.csv', header = TRUE)
 
-for (i in 1:length(symbol)) {
+for (i in 1:nrow(symbol)) {
 
 url <- paste0("http://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=", 
               symbol$Ticker[i], "&type=10-k&dateb=&owner=exclude&count=100")
@@ -118,12 +118,17 @@ aapl_href <-
     
   })
 
+aapl_href <- lapply(aapl_href, function(x) {
+  result <- x[str_detect(x, "htm$")]
+  if (length(result) == 0) character(0) else result
+})
+
 # Show first 5 hrefs
-aapl_href[1:5]
+#aapl_href[1:5]
 #dir.create('AAPL_Scraped_Parsed')
 
-for( i in length(aapl_href)){
-  response <- GET(aapl_href[i],add_headers(
+for( j in 1:length(aapl_href)){
+  response <- GET(as.character(aapl_href[j]),add_headers(
     "User-Agent" = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36",
     "Accept-Language" = "en-US,en;q=0.5",
     "Accept" = "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8",
@@ -144,7 +149,7 @@ for( i in length(aapl_href)){
   
   # Using read_html(response)
   paragraphs<-doc %>%
-    rvest::html_nodes("p") %>%
+    rvest::html_nodes("p, div") %>%
     rvest::html_text()
   
   textfile<-str_split(paragraphs,
@@ -165,9 +170,10 @@ for( i in length(aapl_href)){
     filter(`charlength` > 30 & str_ends(V1,"\\.")) %>%
     select(V1)
   
-  filename <- unlist(str_split(names(aapl_href[i]), "-"))[2]
+  filename <- unlist(str_split(names(aapl_href[j]), "-"))[2]
   write.csv(p3, 
             paste0("G:/Shared drives/2024 FIRE-SA/DATA/Companies_Scraped/", 
                        symbol$Ticker[i], "_", filename, ".csv"))
 }
 }
+
