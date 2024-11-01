@@ -2,7 +2,7 @@ library('tidyverse')
 library('data.table')
 library('rvest')
 library('httr')
-library('htmltidy')
+#library('htmltidy')
 #install.packages('htmltidy')
 
 symbol_table <- as.data.frame(read.csv('unique_tickers_only.csv'))
@@ -12,11 +12,11 @@ symbol<-read.csv('flight_tickers.csv', header = TRUE) |>
   filter(!str_detect(x,"\\."))
 
 
-try_scrape_parse <- function(s){
+try_scrape_parse <- function(i){
   tryCatch({
 
 url <- paste0("http://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=", 
-              symbol$Ticker[i], "&type=10-k&dateb=&owner=exclude&count=100")
+              symbol$x[i], "&type=10-k&dateb=&owner=exclude&count=100")
 
 # Scrape filing page identfier numbers
 response <- GET(url,add_headers(
@@ -180,20 +180,20 @@ for( j in 1:length(aapl_href)){
   filename <- unlist(str_split(names(aapl_href[j]), "-"))[2]
   write.csv(p3, 
             paste0("G:/Shared drives/2024 FIRE-SA/DATA/Companies_Scraped(2)/", 
-                       symbol$Ticker[i], "_", filename, ".csv"))
+                       symbol$x[i], "_", filename, ".csv"))
 }
 },
   error = function(e){
-    message(paste0("An error occurred at ", i," ", symbol$Ticker[i]))
+    message(paste0("An error occurred at ", i," ", symbol$x[i]))
     print(e)
   },
   warning = function(w){
-    message(paste0("A warning occurred at ", i, " ", symbol$Ticker[i]))
+    message(paste0("A warning occurred at ", i, " ", symbol$x[i]))
     print(w)
     return(NA)
   })
 }
-for (i in 1:nrow(symbol)) {
+for (i in 2:nrow(symbol)) {
   try_scrape_parse(i)
 }
-
+try_scrape_parse(1)
