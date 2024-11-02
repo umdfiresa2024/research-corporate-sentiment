@@ -11,11 +11,18 @@ editor: visual
 
 # 2. Literature Review
 
+-   Current research concludes that firms environmental performance tend to increase their communication of their environmental goals to distract from their environmental actions\
+    (Preuss & Max, 2023).
+
+-   Using ClimateBERT, a LLM created by Bingler et al. (2024), this research detects sentences communicating planned GHG reduction sentiments. Then company's score is combined with their real emissions output to evaluate if their pollution reflects their sentiments.
+
 # 3 Data
 
 ## 3.1 FLIGHT
 
 ## 3.2 SEC EDGAR
+
+10-K documents summarize a company's financial performance and other important information including their environmental and emissions activity. By scraping the SEC EDGAR database, 10-K reports were collected for each company and then parsed by sentence to create a data collection of spreadsheets containing each sentence from each 10-K.
 
 ## 3.3 BERT
 
@@ -29,19 +36,6 @@ editor: visual
 
 # 5. References
 
-## Running Code
+-   Bingler, J., Kraus, M., Leippold, M., & Webersinke, N. (2022). How cheap talk in climate disclosures relates to climate initiatives, corporate emissions, and reputation risk. Swiss Finance Institute Research Paper, (22-01)
 
-When you click the **Render** button a document will be generated that includes both content and the output of embedded code. You can embed code like this:
-
-```{r}
-1 + 1
-```
-
-You can add options to executable code like this
-
-```{r}
-#| echo: false
-2 * 2
-```
-
-The `echo: false` option disables the printing of code (only output is displayed).
+-   Preuss, S., & Max, M. M. (2023). Do firms put their money where their mouth is? Sociopolitical claims and corporate political activity. Accounting, Organizations and Society, 101510
