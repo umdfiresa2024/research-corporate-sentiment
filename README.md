@@ -1,45 +1,53 @@
-# Do changes in environmental corporate sentiment lead to changes in GHG
-levels?
-FIRE Sustainability Analytics
-2024-01-01
+---
+title: "Do changes in environmental corporate sentiment lead to
+changes in GHG levels?"
+format: gfm
+author: FIRE Sustainability Analytics
+date: Fall 2024
+editor: visual
+---
 
 # 1. Introduction
 
+Understanding the impact of environmental corporate sentiment on changes in greenhouse gas emissions emphasizes the importance of environmental communication. By connecting how companies communicate their environmental sentiment with changes in their operation’s greenhouse gas emissions, policymakers can better understand the impact of regulation that requires ecological communication. This connection presents an opportunity to encourage companies to reduce their greenhouse gas emissions and show society their corporate environmental sentiment. This type of communication will become more important as countries look factor pollution output into the costs of production to clean domestic manufacturing. It will also further our knowledge on differentiating honest environmental sentiment that is acted upon as reflected by their pollution levels compared to “cheap talk” (Bingler et al., 2024). Through our data, we hold companies more accountable for their communications of their environmental impacts. By examining greenhouse gas emissions we can narrow our focus to directly connecting a company's sentiment of their pollution to the actual emissions they generate.
+
 # 2. Literature Review
+
+-   Presently, much work has been done on discerning genuine climate commitments and ‘cheap talk’. Current research concludes that firms with poor environmental action tend to communicate more environmental goals to “distract from poor performance” (Preuss & Max, 2023). This means that policies that intend to generate environmental commitments need to require clarity from companies if they want genuine environmental communications from companies. Identifying specific and genuine environmental communications has been done through ClimateBert’s environmental claims detection model.
+
+-   Our research uses the zero-emissions BERT large language model created by (Bingler et al. 2024), to detect sentences with planned GHG reduction sentiments and combine the output with GHG emissions to evaluate if a company’s pollution reflects their sentiment.
+
+-   Our research scans corporate communications from companies for sentences containing emissions information and changes in their corresponding pollution measured by the government. By examining these two variables we will see if companies support their environmental claims through changes in their emission levels.
 
 # 3 Data
 
 ## 3.1 FLIGHT
 
+The EPA FLIGHT data set shows the greenhouse gas (GHG) emissions for large facilities. Using this data set, the environmental impact of each company can be quantified. In order to match these companies, to 10-K reports, the company list from FLIGHT is fed into Chat GPT. Relating the GHG emissions from these companies from the past 10 years to corporate sentiment from SEC EDGAR 10-K reports, a score can be determined for each company.
+
 ## 3.2 SEC EDGAR
 
+10-K documents summarize a company's financial performance and other important information including their environmental and emissions activity. By scraping the SEC EDGAR database, 10-K reports were collected for each company and then parsed by sentence to create a data collection of spreadsheets containing each sentence from each 10-K.
+
 ## 3.3 BERT
+
+ClimateBERT is a large language model that is utilized to determine whether the current sentence or phrase is a claim regarding environmental sentiment or not. This model was developed from DistilRoBERTa model, after some further training on both climate related research papers and corporate/general news as well as company reports. From here we decided to utilize the net zero reduction model. This model is a fine tuned version of the climateBERT model, and is able to classify if statements are either related to emission net zero or reduction targets. Thus, this model is an improved version of both the DistilRoBERT model as well as the original climateBERT model. Basically the way we use this model, is we input a csv file of fragmented or whole sentences into this net zero reduction model and one by one the model will return a classification along with a confidence score. Thus, once the entire csv has been ran through the model a new csv with classifications and confidence scores has been produced. Now, we are able to draw conclusions and make claims regarding companies communications regarding net zero reduction and their actual greenhouse gas emissions.
 
 # 4. Summary
 
 ## 4.1 Data Cleansing Chart
+In this research project much of our time was spent cleaning and parsing through our data to make sure we could correctly pass it into the net zero reduction model. Since we were scraping the SEC EDGAR database to collect 10-k reports for each company and ultimately create a csv file with these statements broken down, we had to make sure that each company we analyzed was public. The reason for this is that only publicly traded companies are required to report these 10k statements. Thus, we parsed through each company in our comapny list to determine which of these companies were publicly traded and therefore have reported 10k statements. From here we were able to then collect data and create a csv file containing the broken down 10k statement. Once we have our final results for this week we will create a chart to document this process, this is just a description of what we had to do. 
 
 ## 4.2 Plot
+We will create a plot once our results have completed and we have extracted all of the data we need. We cannot draw any conclusions yet as we are still feeding the text into the net zero reduction model. Once this is complete, and we can match company names with their ticker, we will be able to generate a plot and make conclusions about it. 
 
 ## 4.3 Discussion
+Once again, we are still finishing up processing our results. As these results come finish and we are able to create our plot then we will be able to have a proper discussion regarding our research. We will be able to draw some conclusions as well as make some claims. 
 
 # 5. References
 
-## Running Code
+-   Bingler, J., Kraus, M., Leippold, M., & Webersinke, N. (2022). How cheap talk in climate disclosures relates to climate initiatives, corporate emissions, and reputation risk. Swiss Finance Institute Research Paper, (22-01)
 
-When you click the **Render** button a document will be generated that
-includes both content and the output of embedded code. You can embed
-code like this:
+-   Preuss, S., & Max, M. M. (2023). Do firms put their money where their mouth is? Sociopolitical claims and corporate political activity. Accounting, Organizations and Society, 101510
 
-``` r
-1 + 1
-```
-
-    [1] 2
-
-You can add options to executable code like this
-
-    [1] 4
-
-The `echo: false` option disables the printing of code (only output is
-displayed).
+-   ClimateBERT Climate . ChatClimate. (n.d.). https://www.chatclimate.ai/climatebert 
