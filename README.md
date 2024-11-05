@@ -1,10 +1,9 @@
----
-title: "Do changes in environmental corporate sentiment lead to
-changes in GHG levels?"
-format: gfm
-author: FIRE Sustainability Analytics
-date: Fall 2024
-editor: visual
+# Do changes in environmental corporate sentiment lead to changes in GHG levels?
+
+**Author:** FIRE Sustainability Analytics  
+**Date:** Fall 2024  
+**Editor:** Visual
+
 ---
 
 # 1. Introduction
