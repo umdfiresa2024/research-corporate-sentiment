@@ -71,6 +71,8 @@ merged <- merge(f, chat, by = "company")
 
 tick<-unique(merged$ticker)
 
+write.csv(tick, "flight_tickers.csv", row.names=F)
+
 grouped_merge <- merged %>% 
   group_by(ticker, year) %>%
   summarize(GHG=sum(GHG))
