@@ -31,6 +31,8 @@ The EPA FLIGHT data set shows the greenhouse gas (GHG) emissions for large facil
 
 ## 3.3 BERT
 
+ClimateBERT is a large language model that is utilized to determine whether the current sentence or phrase is a claim regarding environmental sentiment or not. This model was developed from DistilRoBERTa model, after some further training on both climate related research papers and corporate/general news as well as company reports. From here we decided to utilize the net zero reduction model. This model is a fine tuned version of the climateBERT model, and is able to classify if statements are either related to emission net zero or reduction targets. Thus, this model is an improved version of both the DistilRoBERT model as well as the original climateBERT model. Basically the way we use this model, is we input a csv file of fragmented or whole sentences into this net zero reduction model and one by one the model will return a classification along with a confidence score. Thus, once the entire csv has been ran through the model a new csv with classifications and confidence scores has been produced. Now, we are able to draw conclusions and make claims regarding companies communications regarding net zero reduction and their actual greenhouse gas emissions. 
+
 # 4. Summary
 
 ## 4.1 Data Cleansing Chart
