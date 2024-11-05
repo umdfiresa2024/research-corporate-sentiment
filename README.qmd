@@ -9,12 +9,15 @@ editor: visual
 
 # 1. Introduction
 
+Understanding the impact of environmental corporate sentiment on changes in greenhouse gas emissions emphasizes the importance of environmental communication. By connecting how companies communicate their environmental sentiment with changes in their operation’s greenhouse gas emissions, policymakers can better understand the impact of regulation that requires ecological communication. This connection presents an opportunity to encourage companies to reduce their greenhouse gas emissions and show society their corporate environmental sentiment. This type of communication will become more important as countries look factor pollution output into the costs of production to clean domestic manufacturing. It will also further our knowledge on differentiating honest environmental sentiment that is acted upon as reflected by their pollution levels compared to “cheap talk” (Bingler et al., 2024). Through our data, we hold companies more accountable for their communications of their environmental impacts. By examining greenhouse gas emissions we can narrow our focus to directly connecting a company's sentiment of their pollution to the actual emissions they generate.
+
 # 2. Literature Review
 
--   Current research concludes that firms environmental performance tend to increase their communication of their environmental goals to distract from their environmental actions\
-    (Preuss & Max, 2023).
+-   Presently, much work has been done on discerning genuine climate commitments and ‘cheap talk’. Current research concludes that firms with poor environmental action tend to communicate more environmental goals to “distract from poor performance” (Preuss & Max, 2023). This means that policies that intend to generate environmental commitments need to require clarity from companies if they want genuine environmental communications from companies. Identifying specific and genuine environmental communications has been done through ClimateBert’s environmental claims detection model.
 
--   Using ClimateBERT, a LLM created by Bingler et al. (2024), this research detects sentences communicating planned GHG reduction sentiments. Then company's score is combined with their real emissions output to evaluate if their pollution reflects their sentiments.
+-   Our research uses the zero-emissions BERT large language model created by (Bingler et al. 2024), to detect sentences with planned GHG reduction sentiments and combine the output with GHG emissions to evaluate if a company’s pollution reflects their sentiment.
+
+-   Our research scans corporate communications from companies for sentences containing emissions information and changes in their corresponding pollution measured by the government. By examining these two variables we will see if companies support their environmental claims through changes in their emission levels.
 
 # 3 Data
 
