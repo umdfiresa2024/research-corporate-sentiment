@@ -1,6 +1,5 @@
 ---
-title: "Do changes in environmental corporate sentiment lead to
-changes in GHG levels?"
+title: "Do changes in environmental corporate sentiment correlate with changes in GHG levels?"
 format: gfm
 author: FIRE Sustainability Analytics
 date: Fall 2024
@@ -23,7 +22,7 @@ Understanding the impact of environmental corporate sentiment on changes in gree
 
 ## 3.1 FLIGHT
 
-The EPA FLIGHT data set shows the greenhouse gas (GHG) emissions for large facilities. Using this data set, the environmental impact of each company can be quantified. In order to match these companies, to 10-K reports, the company list from FLIGHT is fed into Chat GPT. Relating the GHG emissions from these companies from the past 10 years to corporate sentiment from SEC EDGAR 10-K reports, a score can be determined for each company.
+The EPA FLIGHT data set shows the greenhouse gas (GHG) emissions for large facilities. Using this data set, the environmental impact of each company can be quantified. In order to match these companies, to 10-K reports, the company list from FLIGHT is fed into Chat GPT. The intuition is simple: companies that can be associated with a stock ticker will be in the SEC EDGAR database. For this reason, 11, 000 companies were fed into CHAT GPT to determine if each company had a ticker. The output was each company's name and a stock ticker or N/A if a ticker was not found. Chat GPT found 2578 companies with a ticker. Using a string distance library, the Chat GPT output was merged with FLIGHT data to link GHG emissions with these tickers. The string distance library was used to narrow down companies that were repeats or companies that were not even in FLIGHT that Chat GPT may have unintentionally added. Next, the number of years for each company was examined. To keep data uniform and allow for the most specific data, it was determined that only companies with 13 years of data will be used in our data. The final result is 100 companies that will be referenced in SEC EDGAR. Relating the GHG emissions from these companies from the past 13 years to corporate sentiment from SEC EDGAR 10-K reports, a score can be determined for each company.
 
 ## 3.2 SEC EDGAR
 
@@ -36,13 +35,16 @@ ClimateBERT is a large language model that is utilized to determine whether the 
 # 4. Summary
 
 ## 4.1 Data Cleansing Chart
-In this research project much of our time was spent cleaning and parsing through our data to make sure we could correctly pass it into the net zero reduction model. Since we were scraping the SEC EDGAR database to collect 10-k reports for each company and ultimately create a csv file with these statements broken down, we had to make sure that each company we analyzed was public. The reason for this is that only publicly traded companies are required to report these 10k statements. Thus, we parsed through each company in our comapny list to determine which of these companies were publicly traded and therefore have reported 10k statements. From here we were able to then collect data and create a csv file containing the broken down 10k statement. Once we have our final results for this week we will create a chart to document this process, this is just a description of what we had to do. 
+
+In this research project much of our time was spent cleaning and parsing through our data to make sure we could correctly pass it into the net zero reduction model. Since we were scraping the SEC EDGAR database to collect 10-k reports for each company and ultimately create a csv file with these statements broken down, we had to make sure that each company we analyzed was public. The reason for this is that only publicly traded companies are required to report these 10k statements. Thus, we parsed through each company in our comapny list to determine which of these companies were publicly traded and therefore have reported 10k statements. From here we were able to then collect data and create a csv file containing the broken down 10k statement. Once we have our final results for this week we will create a chart to document this process, this is just a description of what we had to do.
 
 ## 4.2 Plot
-We will create a plot once our results have completed and we have extracted all of the data we need. We cannot draw any conclusions yet as we are still feeding the text into the net zero reduction model. Once this is complete, and we can match company names with their ticker, we will be able to generate a plot and make conclusions about it. 
+
+We will create a plot once our results have completed and we have extracted all of the data we need. We cannot draw any conclusions yet as we are still feeding the text into the net zero reduction model. Once this is complete, and we can match company names with their ticker, we will be able to generate a plot and make conclusions about it.
 
 ## 4.3 Discussion
-Once again, we are still finishing up processing our results. As these results come finish and we are able to create our plot then we will be able to have a proper discussion regarding our research. We will be able to draw some conclusions as well as make some claims. 
+
+Once again, we are still finishing up processing our results. As these results come finish and we are able to create our plot then we will be able to have a proper discussion regarding our research. We will be able to draw some conclusions as well as make some claims.
 
 # 5. References
 
@@ -50,4 +52,4 @@ Once again, we are still finishing up processing our results. As these results c
 
 -   Preuss, S., & Max, M. M. (2023). Do firms put their money where their mouth is? Sociopolitical claims and corporate political activity. Accounting, Organizations and Society, 101510
 
--   ClimateBERT Climate . ChatClimate. (n.d.). https://www.chatclimate.ai/climatebert 
+-   ClimateBERT Climate . ChatClimate. (n.d.). https://www.chatclimate.ai/climatebert
