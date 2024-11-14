@@ -8,7 +8,7 @@ library(magrittr)
 
 grid.newpage()
 FLIGHT <- boxGrob("FLIGHT",
-        width = 0.1, height = 0.1,
+        width = 0.11, height = 0.1,
         x = 0.15, y = 0.75)
 tickers <- boxGrob("Tickers",
                    width = 0.1, height = 0.1,
@@ -26,7 +26,7 @@ Score <- boxGrob("Score",
                  width = 0.1, height = 0.1,
                  x = 0.575, y = 0.6)
 SEC_EDGAR <- boxGrob("SEC \n EDGAR",
-                     width = 0.1, height = 0.1,
+                     width = 0.11, height = 0.1,
                      x = 0.275, y = 0.3)
 CSVs <- boxGrob("CSVs of \n sentences \n for each \n ticker-year",
                 width = 0.15, height = 0.25,
@@ -47,4 +47,4 @@ BERT
 connectGrob(tickers, SEC_EDGAR)
 connectGrob(SEC_EDGAR, CSVs, 'horizontal')
 connectGrob(CSVs, BERT, 'horizontal')
-
+connectGrob(BERT, Score)
