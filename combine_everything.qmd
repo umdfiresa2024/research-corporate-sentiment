@@ -1,0 +1,255 @@
+---
+title: "Aggregate Everything Together"
+format: html
+editor: visual
+---
+
+## Combine ClimateBERT Output
+
+```{r}
+library("tidyverse")
+
+path<-"G:/Shared drives/2024 FIRE-SA/DATA/ProcessedCSV/FIRE298/processed_results_20241114_183049/"
+file_list<-dir(path)
+
+bert<-c()
+
+for (i in 1:length(file_list)) {
+  df <-read.csv(paste0(path,file_list[i])) |>
+  mutate(sentences=1) |>
+  mutate(reduction=ifelse(classification=="reduction",1,0)) |>
+  mutate(netzero=ifelse(classification=="net-zero",1,0)) |>
+  mutate(error=ifelse(classification=="error",1,0)) |>
+  summarize(sentences=sum(sentences), reduction=sum(reduction),
+            netzero=sum(netzero), error=sum(error)) |>
+    mutate(filename=file_list[i])
+  
+  bert<-rbind(bert, df)
+}
+
+bert1<-bert
+```
+
+```{r}
+path<-"G:/Shared drives/2024 FIRE-SA/DATA/ProcessedCSV/FIRE298/processed_results_20241115_222948/"
+file_list<-dir(path)
+
+bert<-c()
+
+for (i in 1:length(file_list)) {
+  df <-read.csv(paste0(path,file_list[i])) |>
+  mutate(sentences=1) |>
+  mutate(reduction=ifelse(classification=="reduction",1,0)) |>
+  mutate(netzero=ifelse(classification=="net-zero",1,0)) |>
+  mutate(error=ifelse(classification=="error",1,0)) |>
+  summarize(sentences=sum(sentences), reduction=sum(reduction),
+            netzero=sum(netzero), error=sum(error)) |>
+    mutate(filename=file_list[i])
+  
+  bert<-rbind(bert, df)
+}
+
+bert2<-bert
+```
+
+```{r}
+path<-"G:/Shared drives/2024 FIRE-SA/DATA/ProcessedCSV/FIRE298/processed_results_20241116_024204/"
+file_list<-dir(path)
+
+bert<-c()
+
+for (i in 1:length(file_list)) {
+  df <-read.csv(paste0(path,file_list[i])) |>
+  mutate(sentences=1) |>
+  mutate(reduction=ifelse(classification=="reduction",1,0)) |>
+  mutate(netzero=ifelse(classification=="net-zero",1,0)) |>
+  mutate(error=ifelse(classification=="error",1,0)) |>
+  summarize(sentences=sum(sentences), reduction=sum(reduction),
+            netzero=sum(netzero), error=sum(error)) |>
+    mutate(filename=file_list[i])
+  
+  bert<-rbind(bert, df)
+}
+
+bert3<-bert
+```
+
+```{r}
+path<-"G:/Shared drives/2024 FIRE-SA/DATA/ProcessedCSV/FIRE298/processed_results_20241116_092714/"
+file_list<-dir(path)
+
+bert<-c()
+
+for (i in 1:length(file_list)) {
+  df <-read.csv(paste0(path,file_list[i])) |>
+  mutate(sentences=1) |>
+  mutate(reduction=ifelse(classification=="reduction",1,0)) |>
+  mutate(netzero=ifelse(classification=="net-zero",1,0)) |>
+  mutate(error=ifelse(classification=="error",1,0)) |>
+  summarize(sentences=sum(sentences), reduction=sum(reduction),
+            netzero=sum(netzero), error=sum(error)) |>
+    mutate(filename=file_list[i])
+  
+  bert<-rbind(bert, df)
+}
+
+bert4<-bert
+```
+
+```{r}
+path<-"G:/Shared drives/2024 FIRE-SA/DATA/ProcessedCSV/FIRE298/processed_results_20241117_003050/"
+file_list<-dir(path)
+
+bert<-c()
+
+for (i in 1:length(file_list)) {
+  df <-read.csv(paste0(path,file_list[i])) |>
+  mutate(sentences=1) |>
+  mutate(reduction=ifelse(classification=="reduction",1,0)) |>
+  mutate(netzero=ifelse(classification=="net-zero",1,0)) |>
+  mutate(error=ifelse(classification=="error",1,0)) |>
+  summarize(sentences=sum(sentences), reduction=sum(reduction),
+            netzero=sum(netzero), error=sum(error)) |>
+    mutate(filename=file_list[i])
+  
+  bert<-rbind(bert, df)
+}
+
+bert5<-bert
+```
+
+```{r}
+path<-"G:/Shared drives/2024 FIRE-SA/DATA/ProcessedCSV/FIRE298/processed_results_20241117_081031/"
+file_list<-dir(path)
+
+bert<-c()
+
+for (i in 1:length(file_list)) {
+  df <-read.csv(paste0(path,file_list[i])) |>
+  mutate(sentences=1) |>
+  mutate(reduction=ifelse(classification=="reduction",1,0)) |>
+  mutate(netzero=ifelse(classification=="net-zero",1,0)) |>
+  mutate(error=ifelse(classification=="error",1,0)) |>
+  summarize(sentences=sum(sentences), reduction=sum(reduction),
+            netzero=sum(netzero), error=sum(error)) |>
+    mutate(filename=file_list[i])
+  
+  bert<-rbind(bert, df)
+}
+
+bert6<-bert
+```
+
+```{r}
+path<-"G:/Shared drives/2024 FIRE-SA/DATA/ProcessedCSV/FIRE298/processed_results_20241117_003050/"
+file_list<-dir(path)
+
+bert<-c()
+
+for (i in 1:length(file_list)) {
+  df <-read.csv(paste0(path,file_list[i])) |>
+  mutate(sentences=1) |>
+  mutate(reduction=ifelse(classification=="reduction",1,0)) |>
+  mutate(netzero=ifelse(classification=="net-zero",1,0)) |>
+  mutate(error=ifelse(classification=="error",1,0)) |>
+  summarize(sentences=sum(sentences), reduction=sum(reduction),
+            netzero=sum(netzero), error=sum(error)) |>
+    mutate(filename=file_list[i])
+  
+  bert<-rbind(bert, df)
+}
+
+bert7<-bert
+```
+
+```{r}
+path<-"G:/Shared drives/2024 FIRE-SA/DATA/ProcessedCSV/FIRE298/processed_results_20241117_155136/"
+file_list<-dir(path)
+
+bert<-c()
+
+for (i in 1:length(file_list)) {
+  df <-read.csv(paste0(path,file_list[i])) |>
+  mutate(sentences=1) |>
+  mutate(reduction=ifelse(classification=="reduction",1,0)) |>
+  mutate(netzero=ifelse(classification=="net-zero",1,0)) |>
+  mutate(error=ifelse(classification=="error",1,0)) |>
+  summarize(sentences=sum(sentences), reduction=sum(reduction),
+            netzero=sum(netzero), error=sum(error)) |>
+    mutate(filename=file_list[i])
+  
+  bert<-rbind(bert, df)
+}
+
+bert8<-bert
+```
+
+```{r}
+path<-"G:/Shared drives/2024 FIRE-SA/DATA/ProcessedCSV/FIRE298/processed_results_20241118_005216/"
+file_list<-dir(path)
+
+bert<-c()
+
+for (i in 1:length(file_list)) {
+  df <-read.csv(paste0(path,file_list[i])) |>
+  mutate(sentences=1) |>
+  mutate(reduction=ifelse(classification=="reduction",1,0)) |>
+  mutate(netzero=ifelse(classification=="net-zero",1,0)) |>
+  mutate(error=ifelse(classification=="error",1,0)) |>
+  summarize(sentences=sum(sentences), reduction=sum(reduction),
+            netzero=sum(netzero), error=sum(error)) |>
+    mutate(filename=file_list[i])
+  
+  bert<-rbind(bert, df)
+}
+
+bert9<-bert
+```
+
+```{r}
+bertall<-rbind(bert1, bert2, bert3, bert4, bert5, bert6, bert7, bert8, bert9) 
+
+all<-separate_wider_delim(bertall, filename, delim="_", names=c("ticker", "year", "tail")) |>
+  group_by(ticker, year, sentences, reduction, netzero, error) |>
+  tally() |>
+  mutate(year=as.numeric(year)) |>
+  mutate(year=year+2000) |>
+  filter(year<=2022) |>
+  filter(year>=2010) |>
+  group_by(ticker) |>
+  mutate(obs=n())
+
+table(all$obs)
+
+all13<-all |>
+  filter(obs==13) |> #keep companies that report every year from 2010 to 2022
+  select(-obs, -n)
+```
+
+Merge BERT with flight data
+
+```{r}
+ghg<-read.csv("cleanedflight.csv")
+
+tick<-read.csv("company final tickers.csv") |>
+  rename(PARENT.COMPANY=index, ticker=company)
+
+flight<-merge(ghg, tick, by="PARENT.COMPANY") |>
+  filter(!str_detect(ticker, "N/A")) |>
+  mutate(namechar=nchar(PARENT.COMPANY)) 
+
+fghg<-flight |>
+  group_by(ticker, year) |>
+  summarize(GHG=sum(GHG))
+
+#find company name for each ticker
+tick_com<-flight |>
+  group_by(ticker) |>
+  mutate(maxchar=max(namechar), maxx=max(X)) |>
+  filter(X==maxx) |>
+  select(PARENT.COMPANY, ticker)
+
+ftghg<-merge(fghg, tick_com, by="ticker")
+
+bert_flight<-merge(ftghg, all13, by=c("ticker", "year"), all.y=TRUE)
+```
