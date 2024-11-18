@@ -29,6 +29,7 @@ reductions_df2$year <- paste0("20", reductions_df2$year)
 
 # Merge GHG and reductions_df2 by ticker and year
 # Not functioning yet
-combined_df <- merge(GHG, reductions_df2, by.x = "ticker", by.y = "year", all = TRUE)
+red <- read.csv("reductions_df2.csv")
+combined_df <- merge(GHG, red, by = c("ticker", "year"), all = TRUE)
 
 
