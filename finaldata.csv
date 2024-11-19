@@ -1,0 +1,196 @@
+"ticker","year","GHG","PARENT.COMPANY","sentences","reduction","netzero","error"
+"ABT",2010,271109,"Abbott Labortories",760,0,0,0
+"ABT",2011,241152,"Abbott Labortories",850,0,0,0
+"ABT",2012,211857,"Abbott Labortories",948,0,0,0
+"ABT",2013,145452,"Abbott Labortories",887,0,0,0
+"ABT",2014,147317,"Abbott Labortories",810,1,0,0
+"ABT",2015,137004,"Abbott Labortories",875,0,0,0
+"ABT",2016,138160,"Abbott Labortories",905,0,0,0
+"ABT",2017,117778,"Abbott Labortories",1041,0,0,0
+"ABT",2018,114188,"Abbott Labortories",1152,0,0,0
+"ABT",2019,113543,"Abbott Labortories",1113,0,0,0
+"ABT",2020,111891,"Abbott Labortories",3554,0,0,0
+"ABT",2021,135898,"Abbott Labortories",2988,0,0,2
+"ABT",2022,138440,"Abbott Labortories",3134,0,0,4
+"ADI",2010,0,NA,2079,3,0,0
+"ADI",2011,41129,"Analog Devices, Inc.",2234,2,0,0
+"ADI",2012,38264,"Analog Devices, Inc.",1400,2,0,2
+"ADI",2013,33849,"Analog Devices, Inc.",1379,1,0,0
+"ADI",2014,37426,"Analog Devices, Inc.",1502,0,0,0
+"ADI",2015,32999,"Analog Devices, Inc.",1428,0,0,2
+"ADI",2016,31656,"Analog Devices, Inc.",1547,0,0,2
+"ADI",2017,34325,"Analog Devices, Inc.",1600,0,0,4
+"ADI",2018,47633,"Analog Devices, Inc.",1596,0,0,6
+"ADI",2019,51711,"Analog Devices, Inc.",1529,0,0,3
+"ADI",2020,45912,"Analog Devices, Inc.",1589,0,0,3
+"ADI",2021,125755,"Analog Devices, Inc.",1550,0,1,4
+"ADI",2022,137479,"Analog Devices, Inc.",1485,0,1,6
+"ADM",2010,4762080,"Archer Daniels Midland Company",1941,1,0,1
+"ADM",2011,10641461,"Archer Daniels Midland Company",1662,0,0,0
+"ADM",2012,10755004,"Archer Daniels Midland Company",1458,0,0,0
+"ADM",2013,10306133,"Archer Daniels Midland Company",2444,1,0,0
+"ADM",2014,10545211,"Archer Daniels Midland Company",1683,0,0,0
+"ADM",2015,12573189,"Archer Daniels Midland Company",1634,0,0,0
+"ADM",2016,12150317,"Archer Daniels Midland Company",1596,0,0,0
+"ADM",2017,12381362,"Archer Daniels Midland Company",1549,0,0,0
+"ADM",2018,12341044,"Archer Daniels Midland Company",1599,0,0,0
+"ADM",2019,12388843,"Archer Daniels Midland Company",1639,0,0,0
+"ADM",2020,11271636,"Archer Daniels Midland Company",2807,0,0,1
+"ADM",2021,11235812,"Archer Daniels Midland Company",1548,3,1,0
+"ADM",2022,11371897,"Archer Daniels Midland Company",1487,8,3,0
+"APD",2010,859226,"Air Products & Chemicals, Inc.",1773,0,0,0
+"APD",2011,7932934,"Air Products & Chemicals, Inc.",1777,1,0,0
+"APD",2012,7845432,"Air Products & Chemicals, Inc.",1853,1,0,0
+"APD",2013,8098553,"Air Products & Chemicals, Inc.",1783,1,0,0
+"APD",2014,8859206,"Air Products & Chemicals, Inc.",1833,0,0,0
+"APD",2015,12466575,"Air Products & Chemicals, Inc.",1718,2,0,0
+"APD",2016,12310104,"Air Products & Chemicals, Inc.",1783,1,0,0
+"APD",2017,12445640,"Air Products & Chemicals, Inc.",2157,0,0,0
+"APD",2018,12523837,"Air Products & Chemicals, Inc.",2155,0,0,0
+"APD",2019,12683849,"Air Products & Chemicals, Inc.",3332,5,0,4
+"APD",2020,11606326,"Air Products & Chemicals, Inc.",1850,3,1,0
+"APD",2021,12455743,"Air Products & Chemicals, Inc.",1791,1,1,0
+"APD",2022,13342140,"Air Products & Chemicals, Inc.",1868,13,1,0
+"ATI",2010,440505,"Allegheny Technologies Incorporated",2466,0,0,0
+"ATI",2011,436989,"Allegheny Technologies Incorporated",2435,2,0,0
+"ATI",2012,469393,"Allegheny Technologies Incorporated",1448,3,0,0
+"ATI",2013,452517,"Allegheny Technologies Incorporated",1343,0,0,0
+"ATI",2014,539205,"Allegheny Technologies Incorporated",1625,0,0,6
+"ATI",2015,469047,"Allegheny Technologies Incorporated",1650,0,0,2
+"ATI",2016,342455,"Allegheny Technologies Incorporated",1716,0,0,0
+"ATI",2017,354371,"Allegheny Technologies Incorporated",1737,0,0,4
+"ATI",2018,397203,"Allegheny Technologies Incorporated",1741,0,0,2
+"ATI",2019,416004,"Allegheny Technologies Incorporated",1787,0,0,2
+"ATI",2020,325869,"Allegheny Technologies Incorporated",3275,1,0,4
+"ATI",2021,300870,"Allegheny Technologies Incorporated",1985,0,0,2
+"ATI",2022,315910,"Allegheny Technologies Incorporated",1900,0,0,2
+"BMY",2010,67160,"Bristol-Myers Squibb Company",2444,0,0,0
+"BMY",2011,123522,"Bristol-Myers Squibb Company",2612,0,0,0
+"BMY",2012,118048,"Bristol-Myers Squibb Company",2236,1,0,0
+"BMY",2013,129360,"Bristol-Myers Squibb Company",2352,1,0,0
+"BMY",2014,125673,"Bristol-Myers Squibb Company",2576,0,0,0
+"BMY",2015,122001,"Bristol-Myers Squibb Company",2413,0,0,0
+"BMY",2016,118298,"Bristol-Myers Squibb Company",2445,1,0,0
+"BMY",2017,121417,"Bristol-Myers Squibb Company",2232,1,0,2
+"BMY",2018,110217,"Bristol-Myers Squibb Company",2249,1,0,2
+"BMY",2019,84260,"Bristol-Myers Squibb Company",2247,0,0,0
+"BMY",2020,83475,"Bristol-Myers Squibb Company",4328,0,0,5
+"BMY",2021,90193,"Bristol-Myers Squibb Company",2396,0,0,1
+"BMY",2022,91669,"Bristol-Myers Squibb Company",2473,3,0,1
+"CAG",2010,0,NA,1982,0,0,0
+"CAG",2011,378256,"CONAGRA FOODS INC",1954,0,0,0
+"CAG",2012,383110,"CONAGRA FOODS INC",1366,0,0,0
+"CAG",2013,377310,"CONAGRA FOODS INC",1645,0,0,0
+"CAG",2014,383525,"CONAGRA FOODS INC",1733,0,0,0
+"CAG",2015,552198,"CONAGRA FOODS INC",1681,0,0,0
+"CAG",2016,198075,"CONAGRA FOODS INC",1616,0,0,0
+"CAG",2017,120982,"CONAGRA FOODS INC",1743,0,0,0
+"CAG",2018,93500,"CONAGRA FOODS INC",1862,1,0,1
+"CAG",2019,123700,"CONAGRA FOODS INC",1774,0,0,1
+"CAG",2020,140014,"CONAGRA FOODS INC",1760,0,0,1
+"CAG",2021,143520,"CONAGRA FOODS INC",1520,0,0,1
+"CAG",2022,158390,"CONAGRA FOODS INC",1465,0,0,1
+"CAT",2010,284997,"Caterpillar, Inc.",756,0,0,0
+"CAT",2011,484402,"Caterpillar, Inc.",1193,0,0,0
+"CAT",2012,584231,"Caterpillar, Inc.",1147,0,0,0
+"CAT",2013,586191,"Caterpillar, Inc.",638,0,0,0
+"CAT",2014,577770,"Caterpillar, Inc.",660,0,0,0
+"CAT",2015,546156,"Caterpillar, Inc.",669,0,0,0
+"CAT",2016,519334,"Caterpillar, Inc.",2343,0,0,0
+"CAT",2017,575199,"Caterpillar, Inc.",2384,0,0,0
+"CAT",2018,641042,"Caterpillar, Inc.",2308,0,0,0
+"CAT",2019,596463,"Caterpillar, Inc.",2286,0,0,0
+"CAT",2020,459262,"Caterpillar, Inc.",3693,0,0,0
+"CAT",2021,471627,"Caterpillar, Inc.",1764,1,0,0
+"CAT",2022,479805,"Caterpillar, Inc.",1776,1,0,0
+"CE",2010,831421,"Celanese Corporation",3402,12,0,0
+"CE",2011,1726313,"Celanese Corporation",3323,2,0,1
+"CE",2012,1717020,"Celanese Corporation",2183,0,0,0
+"CE",2013,1729730,"Celanese Corporation",2114,0,0,0
+"CE",2014,1754834,"Celanese Corporation",2171,0,0,0
+"CE",2015,1484523,"Celanese Corporation",1915,0,0,0
+"CE",2016,1541784,"Celanese Corporation",1807,0,0,0
+"CE",2017,1475927,"Celanese Corporation",1845,0,0,0
+"CE",2018,1549686,"Celanese Corporation",1934,2,0,0
+"CE",2019,2100703,"Celanese Corporation",1885,1,0,0
+"CE",2020,1918463,"Celanese Corporation",2883,2,0,2
+"CE",2021,1744939,"Celanese Corporation",1538,0,1,3
+"CE",2022,1735294,"Celanese Corporation",1552,0,1,3
+"CF",2010,0,NA,1533,0,0,0
+"CF",2011,10211048,"CF INDUSTRIES HOLDINGS INC",1445,2,0,0
+"CF",2012,10510784,"CF INDUSTRIES HOLDINGS INC",1471,2,0,0
+"CF",2013,10528401,"CF INDUSTRIES HOLDINGS INC",1513,0,0,0
+"CF",2014,9821701,"CF INDUSTRIES HOLDINGS INC",1364,0,0,0
+"CF",2015,12585412,"CF INDUSTRIES HOLDINGS INC",2135,1,0,0
+"CF",2016,12534689,"CF INDUSTRIES HOLDINGS INC",2585,3,0,0
+"CF",2017,19126601,"CF INDUSTRIES HOLDINGS INC",2588,2,0,0
+"CF",2018,19032392,"CF INDUSTRIES HOLDINGS INC",2355,2,0,0
+"CF",2019,20066538,"CF INDUSTRIES HOLDINGS INC",2299,1,0,0
+"CF",2020,19602924,"CF INDUSTRIES HOLDINGS INC",3872,6,0,1
+"CF",2021,17961966,"CF INDUSTRIES HOLDINGS INC",2099,9,0,0
+"CF",2022,19793269,"CF INDUSTRIES HOLDINGS INC",2139,8,0,0
+"CLF",2010,0,NA,2529,4,0,0
+"CLF",2011,3729807.15,"CLIFFS NATURAL RESOURCES",2698,5,0,0
+"CLF",2012,4593895.43,"CLIFFS NATURAL RESOURCES",2944,3,0,0
+"CLF",2013,5000439.87,"CLIFFS NATURAL RESOURCES",3162,8,0,0
+"CLF",2014,5249238.09,"CLIFFS NATURAL RESOURCES",2908,10,0,0
+"CLF",2015,3490892.08,"CLIFFS NATURAL RESOURCES",2998,7,0,2
+"CLF",2016,1934074.94,"CLIFFS NATURAL RESOURCES",2940,6,0,2
+"CLF",2017,2449775,"CLIFFS NATURAL RESOURCES",2471,4,0,0
+"CLF",2018,2449866,"CLIFFS NATURAL RESOURCES",2493,3,0,0
+"CLF",2019,2194702,"CLIFFS NATURAL RESOURCES",2106,2,0,0
+"CLF",2020,27234614,"CLIFFS NATURAL RESOURCES",3364,11,0,4
+"CLF",2021,28753978.52,"CLIFFS NATURAL RESOURCES",2181,13,0,0
+"CLF",2022,24977353.4,"CLIFFS NATURAL RESOURCES",2184,9,0,5
+"CNP",2010,507942,"Centerpoint Energy Resources Corp",2122,0,0,0
+"CNP",2011,2456681,"Centerpoint Energy Resources Corp",24,0,0,0
+"CNP",2012,2522153,"Centerpoint Energy Resources Corp",1745,0,0,0
+"CNP",2013,2292539,"Centerpoint Energy Resources Corp",1659,0,0,0
+"CNP",2014,463125,"Centerpoint Energy Resources Corp",2017,0,0,0
+"CNP",2015,464878,"Centerpoint Energy Resources Corp",2164,0,0,0
+"CNP",2016,461894,"Centerpoint Energy Resources Corp",2298,0,0,0
+"CNP",2017,430852,"Centerpoint Energy Resources Corp",2097,2,0,0
+"CNP",2018,414436,"Centerpoint Energy Resources Corp",2221,0,0,0
+"CNP",2019,396922,"Centerpoint Energy Resources Corp",2547,1,0,0
+"CNP",2020,4095772,"Centerpoint Energy Resources Corp",5443,3,0,2
+"CNP",2021,6114180,"Centerpoint Energy Resources Corp",2827,2,2,1
+"CNP",2022,4800216,"Centerpoint Energy Resources Corp",2576,7,11,1
+"COP",2010,1963264.9271,"CONOCOPHILLIPS CO",4038,8,0,0
+"COP",2011,25640714.486525,"CONOCOPHILLIPS CO",4156,4,0,0
+"COP",2012,12343155.8993,"CONOCOPHILLIPS CO",2301,2,0,0
+"COP",2013,11901845.1442,"CONOCOPHILLIPS CO",2027,4,0,0
+"COP",2014,8978643.7375,"CONOCOPHILLIPS CO",2096,4,0,0
+"COP",2015,10811746.7638,"CONOCOPHILLIPS CO",1779,1,0,0
+"COP",2016,10143259.9995,"CONOCOPHILLIPS CO",1815,1,0,0
+"COP",2017,7269207.7722,"CONOCOPHILLIPS CO",1816,4,0,0
+"COP",2018,7979803.7414,"CONOCOPHILLIPS CO",1834,0,0,0
+"COP",2019,9219346.8342,"CONOCOPHILLIPS CO",2468,3,0,0
+"COP",2020,7857005.0786,"CONOCOPHILLIPS CO",8821,19,0,0
+"COP",2021,9610750.1884,"CONOCOPHILLIPS CO",8933,15,15,0
+"COP",2022,9476815.0118,"CONOCOPHILLIPS CO",8225,30,12,2
+"CVX",2010,15873750.3905696,"Chevron Corporation (highest-level company in the ownership hierarchy of the refining assets only, n",4761,2,0,1
+"CVX",2011,13241095.2254752,"Chevron Corporation (highest-level company in the ownership hierarchy of the refining assets only, n",6842,4,0,1
+"CVX",2012,13312122.4983196,"Chevron Corporation (highest-level company in the ownership hierarchy of the refining assets only, n",4567,0,0,1
+"CVX",2013,12768020.662,"Chevron Corporation (highest-level company in the ownership hierarchy of the refining assets only, n",5316,2,0,0
+"CVX",2014,909446.948,"Chevron Corporation (highest-level company in the ownership hierarchy of the refining assets only, n",5142,2,0,0
+"CVX",2015,0,NA,1949,0,0,0
+"CVX",2016,0,NA,1860,0,0,3
+"CVX",2017,0,NA,1923,0,0,1
+"CVX",2018,0,NA,1908,0,0,1
+"CVX",2019,0,NA,1894,0,0,3
+"CVX",2020,830.229152,"Chevron Corporation (highest-level company in the ownership hierarchy of the refining assets only, n",3188,1,0,5
+"CVX",2021,592.046672,"Chevron Corporation (highest-level company in the ownership hierarchy of the refining assets only, n",1828,0,0,2
+"CVX",2022,671.053248,"Chevron Corporation (highest-level company in the ownership hierarchy of the refining assets only, n",1723,2,5,2
+"ED",2010,0,NA,1674,6,0,0
+"ED",2011,3355406,"CONSOLIDATED EDISON INC",1647,8,0,0
+"ED",2012,3248703,"CONSOLIDATED EDISON INC",1603,7,0,0
+"ED",2013,3337760,"CONSOLIDATED EDISON INC",1646,7,0,0
+"ED",2014,3146417,"CONSOLIDATED EDISON INC",1669,7,0,0
+"ED",2015,3117192,"CONSOLIDATED EDISON INC",1571,11,0,0
+"ED",2016,2984902,"CONSOLIDATED EDISON INC",2281,7,0,0
+"ED",2017,2904182,"CONSOLIDATED EDISON INC",2293,7,0,0
+"ED",2018,2963666,"CONSOLIDATED EDISON INC",2480,6,0,0
+"ED",2019,2815753,"CONSOLIDATED EDISON INC",2698,5,2,0
+"ED",2020,2659412,"CONSOLIDATED EDISON INC",4271,23,4,4
+"ED",2021,2741623,"CONSOLIDATED EDISON INC",2560,9,2,0
+"ED",2022,2767956,"CONSOLIDATED EDISON INC",2663,7,1,0
