@@ -39,6 +39,10 @@ In this research project much of our time was spent cleaning and parsing through
 
 ## 4.2 Plot
 ![GHG per year plot](GHG_year.png)
+This plot shows the GHG per year for each of the 15 companies.
+
+![Redcution plot](Reduction_GHG.png)
+This plot shows the number of reductions according to each GHG value for each of the 15 companies.
 
 ## 4.3 Discussion
 Once again, we are still finishing up processing our results. As these results come finish and we are able to create our plot then we will be able to have a proper discussion regarding our research. We will be able to draw some conclusions as well as make some claims. 
