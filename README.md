@@ -38,7 +38,7 @@ ClimateBERT is a large language model that is utilized to determine whether the 
 In this research project much of our time was spent cleaning and parsing through our data to make sure we could correctly pass it into the net zero reduction model. Since we were scraping the SEC EDGAR database to collect 10-k reports for each company and ultimately create a csv file with these statements broken down, we had to make sure that each company we analyzed was public. The reason for this is that only publicly traded companies are required to report these 10k statements. Thus, we parsed through each company in our comapny list to determine which of these companies were publicly traded and therefore have reported 10k statements. From here we were able to then collect data and create a csv file containing the broken down 10k statement. Once we have our final results for this week we will create a chart to document this process, this is just a description of what we had to do. 
 
 ## 4.2 Plot
-We will create a plot once our results have completed and we have extracted all of the data we need. We cannot draw any conclusions yet as we are still feeding the text into the net zero reduction model. Once this is complete, and we can match company names with their ticker, we will be able to generate a plot and make conclusions about it. 
+![GHG per year plot](GHG_year.png)
 
 ## 4.3 Discussion
 Once again, we are still finishing up processing our results. As these results come finish and we are able to create our plot then we will be able to have a proper discussion regarding our research. We will be able to draw some conclusions as well as make some claims. 
