@@ -26,7 +26,7 @@ The EPA FLIGHT data set shows the greenhouse gas (GHG) emissions for large facil
 
 ## 3.2 SEC EDGAR
 
-10-K documents summarize a company's financial performance and other important information including their environmental and emissions activity. By scraping the SEC EDGAR database, 10-K reports were collected for each company and then parsed by sentence to create a data collection of spreadsheets containing each sentence from each 10-K.
+10-K documents summarize a company's financial performance and other important information including their environmental and emissions activity. By scraping the SEC EDGAR database, 10-K reports were collected for each company and then parsed by sentence to create a data collection of spreadsheets containing each sentence from each 10-K. After gathering companies from the FLIGHT database, we filtered the companies to only consider ones that are publicly traded. This ensures that they will be in the SEC EDGAR database since this database only has companies that are publicly traded.
 
 ## 3.3 BERT
 
