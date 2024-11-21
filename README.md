@@ -41,7 +41,7 @@ In this research project much of our time was spent cleaning and parsing through
 ![GHG per year plot](GHG_year.png)
 This plot shows the GHG per year for each of the 15 companies.
 
-![Redcution plot](Reduction_GHG.png)
+![Reduction plot](Reduction_GHG.png)
 This plot shows the number of reductions according to each GHG value for each of the 15 companies.
 
 ## 4.3 Discussion
