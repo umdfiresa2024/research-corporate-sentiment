@@ -66,7 +66,11 @@ From the data we collected and processed there are various metrics that show us 
 
 ## 5.3 Mechanisms
 
-There are various mechanisms that drive this correlation between corporate sentiment and GHG emissions detailed below. 1. Implementation Timeline - It takes time for changes to be reflected once they are announced. For example, if a given plan is announced it may take an entire year for the change to be reflected in the data. 2. Mergers and Acquisitions - When companies merge or are acquired by others, there can be an effect in the emission measurement. Relocation also plays a factor in emissions measurements whether it could be an increase, decrease, or loss of data.
+There are various mechanisms that drive this correlation between corporate sentiment and GHG emissions detailed below. 
+1. Implementation Timeline
+   - It takes time for changes to be reflected once they are announced. For example, if a given plan is announced it may take an entire year for the change to be reflected in the data.
+2. Mergers and Acquisitions
+   - When companies merge or are acquired by others, there can be an effect in the emission measurement. Relocation also plays a factor in emissions measurements whether it could be an increase, decrease, or loss of data.
 
 ## 5.4 Literature Context
 
