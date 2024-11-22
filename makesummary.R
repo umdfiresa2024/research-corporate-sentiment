@@ -36,4 +36,4 @@ modelplot(m1) +
        subtitle="After including year and company fixed effects")
 
 dev.off()
-       
+

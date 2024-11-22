@@ -54,9 +54,7 @@ Only publicly traded companies are required to report 10-K statements. Thus, we 
 
 ## 4.3 Empirical Analysis and Linear Regression
 
--   Empirical Equation:
 
--   
 
 # 5. Discussion
 
