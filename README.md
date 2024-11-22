@@ -26,7 +26,7 @@ The EPA FLIGHT data set shows our outcome variable which is the greenhouse gas (
 
 ## 3.2 SEC EDGAR
 
-10-K documents summarize a company's financial performance and other important information including their environmental and emissions activity. By scraping the SEC EDGAR database, 10-K reports were collected for our geographic unit, each company, and then parsed by sentence to create a data collection of spreadsheets containing each sentence from each 10-K. After gathering companies from the FLIGHT database, we filtered the companies to only consider ones that are publicly traded. This ensures that they will be in the SEC EDGAR database since this database only has companies that are publicly traded. This task produced one spreadsheet of sentences for the past 13 years for each of the 100 FLIGHT companies yielding 1,300 spreadsheets.
+10-K documents summarize a company's financial performance and other important information including their environmental and emissions activity. By scraping the SEC EDGAR database, 10-K reports were collected for our geographic unit, each company, for a frequency of each year for the past 13 years and then parsed by sentence to create a data collection of spreadsheets containing each sentence from each 10-K. After gathering companies from the FLIGHT database, we filtered the companies to only consider ones that are publicly traded. This ensures that they will be in the SEC EDGAR database since this database only has companies that are publicly traded. This task produced one spreadsheet of sentences for the past 13 years for each of the 100 FLIGHT companies yielding 1,300 spreadsheets.
 
 ## 3.3 BERT
 
