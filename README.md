@@ -36,7 +36,11 @@ ClimateBERT is a large language model that is utilized to determine whether the 
 
 ## 4.1 Data Cleansing Chart
 
-![Data Cleansing Chart](Poster%20Stuff/Copy%20of%20Data%20Cleansing%20Chart%20Corporate%20Sentiment.png) In this research project much of our time was spent cleaning and parsing through our data to make sure we could correctly pass it into the net zero reduction model. Since we were scraping the SEC EDGAR database to collect 10-k reports for each company and ultimately create a csv file with these statements broken down, we had to make sure that each company we analyzed was public. The reason for this is that only publicly traded companies are required to report these 10k statements. Thus, we parsed through each company in our company list to determine which of these companies were publicly traded and therefore have reported 10k statements. From here we were able to then collect data and create a csv file containing the broken down 10k statement. Once we have our final results for this week we will create a chart to document this process, this is just a description of what we had to do.
+![Data Cleansing Chart](Poster%20Stuff/Copy%20of%20Data%20Cleansing%20Chart%20Corporate%20Sentiment.png)
+
+Only publicly traded companies are required to report 10-K statements. Thus, we parsed through each company in our EPA FLIGHT company list to generate tickers only for that companies were publicly traded and therefore have reported 10-K statements. From here we were able to then scrape the SEC EDGAR collect data and create a csv file containing the broken down 10-K statement's sentences for each ticker-year. These csv files were then process through the BERT net zero reduction model to identify emission reduction sentences. Lastly we generate scores by computing ratio of reduction sentences to total sentences in the 10-K report and connected them to the quantity of GHG emissions for each year as reported on EPA FLIGHT database.
+
+![Data Summary Chart](Summary.png)
 
 ## 4.2 Plot
 
@@ -44,11 +48,25 @@ ClimateBERT is a large language model that is utilized to determine whether the 
 
 ![Reduction plot](reduction_GHG.png) This plot shows the number of reductions according to each GHG value for each of the 15 companies.
 
-## 4.3 Discussion
+![Correlation plot](Poster%20Stuff/correlation.png)
 
-Once again, we are still finishing up processing our results. As these results come finish and we are able to create our plot then we will be able to have a proper discussion regarding our research. We will be able to draw some conclusions as well as make some claims.
+![Coefficient plot](Poster%20Stuff/coefficients.png)
 
-# 5. References
+## 4.3 Empirical Analysis and Linear Regression
+
+-   Empirical Equation:
+
+-   
+
+# 5. Discussion
+
+-   Environmental corporate sentiment shows a positive correlation with actual changes in GHG levels. Many companies show increased reduction commitments while increasing emission levels.
+
+-   Corporate Restructuring: Mergers, acquisitions, and facility relocations affecting emission measurements.
+
+-   Implementation Timeline: Gap between environmental commitments and actual technological/operational changes.
+
+# 6. References
 
 -   Bingler, J., Kraus, M., Leippold, M., & Webersinke, N. (2022). How cheap talk in climate disclosures relates to climate initiatives, corporate emissions, and reputation risk. Swiss Finance Institute Research Paper, (22-01)
 
