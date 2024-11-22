@@ -60,17 +60,19 @@ Only publicly traded companies are required to report 10-K statements. Thus, we 
 
 After completing all of the research, above we actually found that there is a pattern regarding corporate sentiment and actual changes in GHG levels. We found that companies with higher GHG emissions consistently produce more environmental reduction/net-zero commitments or statements in their sentiment. This correlation suggests that companies who produce more GHG emissions, attempt to make up for it or mask it via environmental communication.
 
-## 5.2 Quantitive Analysis
+## 5.2 Quantitative Analysis
 
 From the data we collected and processed there are various metrics that show us this correlation between corporate sentiment and greenhouse gas emissions. From the graphs produced, we can see that firms with emissions that exceed 20 million GHG units, generally also have nearly 2-3 times more statements regarding reduction/net-zero commitments. It is also important to recognize that even with communication increasing through the years, the emissions remained pretty stable signaling that there is no action behind these commitments. Lastly, when reduction/net-zero statements are increasing, we also see higher emission in these times.
 
 ## 5.3 Mechanisms
 
-There are various mechanisms that drive this correlation between corporate sentiment and GHG emissions detailed below. 1. Implementation Timeline - It takes time for changes to be reflected once they are announced. For example, if a given plan is announced it make take an entire year for the change to be reflected in the data. 2. Mergers and Acquisitions - When companies merge or are acquired by others, there can be an effect in the emission measurement. Relocation also plays a factor in emissions measurements whether it could be an increase, decrease, or loss of data.
+There are various mechanisms that drive this correlation between corporate sentiment and GHG emissions detailed below. 1. Implementation Timeline - It takes time for changes to be reflected once they are announced. For example, if a given plan is announced it may take an entire year for the change to be reflected in the data. 2. Mergers and Acquisitions - When companies merge or are acquired by others, there can be an effect in the emission measurement. Relocation also plays a factor in emissions measurements whether it could be an increase, decrease, or loss of data.
 
 ## 5.4 Literature Context
 
-Our findings are very similar and correlate with existing research. Bingler et al.(2022) found that firms with poor environmental performance tend to communicate more reduction/net-zero commitments to "distract from poor performance." Our study further validates this phenomenon across a longer time frame with emissions data. \# 6. References
+Our findings are very similar and correlate with existing research. Bingler et al.(2022) found that firms with poor environmental performance tend to communicate more reduction/net-zero commitments to "distract from poor performance." Our study further validates this phenomenon across a longer time frame with emissions data. 
+
+# 6. References
 
 -   Bingler, J., Kraus, M., Leippold, M., & Webersinke, N. (2022). How cheap talk in climate disclosures relates to climate initiatives, corporate emissions, and reputation risk. Swiss Finance Institute Research Paper, (22-01)
 
