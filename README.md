@@ -98,7 +98,16 @@ There are various mechanisms that drive this correlation between corporate senti
 
 Our findings are very similar and correlate with existing research. Bingler et al.(2022) found that firms with poor environmental performance tend to communicate more reduction/net-zero commitments to "distract from poor performance." Our study further validates this phenomenon across a longer time frame with emissions data. 
 
-# 6. References
+# 6. Future Plans
+Our future plans for this project are vast, but some ways that we can proceed have been deatiled below.
+1. Industry Specific Research
+   - Moving forward we could analyze sector specific patterns, and see if different sectors have different correlations between GHG and coporate sentiment
+2. Increased Timeframe and Firms
+   - This data processing handling requires a lot of computing power, so with some more powerful computing resources we may be able to expand our research across many more firms and years, ultimately making our findings more reliable.
+3. Policy Influence
+   - Another way to move forward includes researching more about policy changes and how they effect corporate sentiment. How effective are current disclosure policies? Do changes in these policies also change corporate sentiment? 
+
+# 7. References
 
 -   Bingler, J., Kraus, M., Leippold, M., & Webersinke, N. (2022). How cheap talk in climate disclosures relates to climate initiatives, corporate emissions, and reputation risk. Swiss Finance Institute Research Paper, (22-01)
 
