@@ -53,6 +53,28 @@ Only publicly traded companies are required to report 10-K statements. Thus, we 
 ![Coefficient plot](Poster%20Stuff/coefficients.png)
 
 ## 4.3 Empirical Analysis and Linear Regression
+Our research examined the relationship between environmental corporate sentiment and greenhouse gas emissions utilizing the following model. Note, this is a simiplified version of what our research looked like to give a glimpse into how we achieved our results. 
+''' 
+Sentiment_Score(i,t) = (Reduction_Sentences(i,t) + NetZero_Sentences(i,t)) / Total_Sentences(i,t)
+where:
+i = company identifier
+t = year (2010-2022)
+Reduction_Sentences = sentences classified as containing emission reduction commitments
+NetZero_Sentences = sentences classified as containing net-zero targets
+''' 
+To analyze the relationship between sentiment and emissions, we estimate:
+
+'''
+Sentiment_Score(i,t) = β₀ + β₁GHG_Emissions(i,t) + γᵢ + δₜ + ε(i,t)
+where:
+β₀ = intercept term
+β₁ = coefficient measuring the relationship between GHG emissions and sentiment
+γᵢ = company fixed effects
+δₜ = year fixed effects
+ε(i,t) = error term
+''' 
+
+The sentiment score for each company-year observation is calculated as the ratio of sentences classified by ClimateBERT as either emission reduction or net-zero commitments to total sentences in the 10-K report. GHG emissions are measured in metric tons of CO2 equivalent as reported to EPA FLIGHT.
 
 # 5. Discussion
 
