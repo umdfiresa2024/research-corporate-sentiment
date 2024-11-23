@@ -118,7 +118,7 @@ Our findings are very similar and correlate with existing research. Bingler et a
 
 # 6. Future Plans
 
-Our future plans for this project are vast, but some ways that we can proceed have been detailed below. 1. Industry Specific Research - Moving forward we could analyze sector specific patterns, and see if different sectors have different correlations between GHG and coporate sentiment 2. Increased Timeframe and Firms - This data processing handling requires a lot of computing power, so with some more powerful computing resources we may be able to expand our research across many more firms and years, ultimately making our findings more reliable. 3. Policy Influence - Another way to move forward includes researching more about policy changes and how they effect corporate sentiment. How effective are current disclosure policies? Do changes in these policies also change corporate sentiment?
+Our future plans for this project are vast, but some ways that we can proceed have been detailed below. 1. Industry Specific Research - Moving forward we could analyze sector specific patterns, and see if different sectors have different correlations between GHG and corporate sentiment 2. Increased Timeframe and Firms - This data processing handling requires a lot of computing power, so with some more powerful computing resources we may be able to expand our research across many more firms and years, ultimately making our findings more reliable. 3. Policy Influence - Another way to move forward includes researching more about policy changes and how they effect corporate sentiment. How effective are current disclosure policies? Do changes in these policies also change corporate sentiment?
 
 # 7. References
 

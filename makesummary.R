@@ -36,4 +36,11 @@ modelplot(m1) +
        subtitle="After including year and company fixed effects")
 
 dev.off()
+rm(m1)
+load('m1.RData')
+#save(m1, file = "m1.RData")
+#saveRDS(m1,'m1.rds')
+# m1_summary <- capture.output(summary(m1))
+# png("m1.png", width = 8, height = 5, units = in, res = 500)
+# textplot(m1_summary, halign = 'left', valign = 'top')
 

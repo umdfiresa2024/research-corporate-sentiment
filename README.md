@@ -309,7 +309,7 @@ phenomenon across a longer time frame with emissions data.
 Our future plans for this project are vast, but some ways that we can
 proceed have been detailed below. 1. Industry Specific Research - Moving
 forward we could analyze sector specific patterns, and see if different
-sectors have different correlations between GHG and coporate sentiment
+sectors have different correlations between GHG and corporate sentiment
 2. Increased Timeframe and Firms - This data processing handling
 requires a lot of computing power, so with some more powerful computing
 resources we may be able to expand our research across many more firms
