@@ -13,7 +13,7 @@ of regulation that requires ecological reporting. This connection
 presents an opportunity to encourage companies to reduce their
 greenhouse gas emissions and show society their corporate environmental
 sentiment in their annual 10-K reports. This type of communication will
-become more important as countries look factor pollution output into the
+become more important as countries factor pollution output into the
 costs of production to clean domestic manufacturing. It will also
 further our knowledge on differentiating honest environmental sentiment
 that is acted upon as reflected by their pollution levels compared to
@@ -35,7 +35,7 @@ sentiment compared to their actual greenhouse gas emission output.
   goals to “distract from poor performance” (Preuss & Max, 2023). This
   study focused on firms that were a part of the S&P 500 during the time
   of the sample space. The reasoning behind this is that firms part of
-  the S&P 500 were more likely to issue sociopolitical statements and
+  The S&P 500 were more likely to issue sociopolitical statements and
   are more likely to have PAC contributions compared to smaller firms
   (Preuss & Max, 2023). This means that policies that intend to generate
   environmental commitments need to require clarity from companies if
@@ -86,7 +86,7 @@ set, the environmental impact of each company can be quantified. In
 order to match these companies, to 10-K reports, the company list from
 FLIGHT is fed into Chat GPT. The intuition is simple: companies that can
 be associated with a stock ticker will be in the SEC EDGAR database. For
-this reason, 11, 000 companies were fed into CHAT GPT to determine if
+this reason, 11,000 companies were fed into CHAT GPT to determine if
 each company had a ticker. The output was each company’s name and a
 stock ticker or N/A if a ticker was not found. Chat GPT found 2578
 companies with a ticker. Using a string distance library, the Chat GPT
