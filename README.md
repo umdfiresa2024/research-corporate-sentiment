@@ -267,7 +267,7 @@ summary(m1)
 
 ## 5.1 Findings
 
-After completing all of the research, above we actually found that there
+After completing all of the research above, we actually found that there
 is a pattern regarding corporate sentiment and actual changes in GHG
 levels. We found that companies with higher GHG emissions consistently
 produce more environmental reduction/net-zero commitments or statements
@@ -291,11 +291,13 @@ emission in these times.
 ## 5.3 Mechanisms
 
 There are various mechanisms that drive this correlation between
-corporate sentiment and GHG emissions detailed below. 1. Implementation
-Timeline - It takes time for changes to be reflected once they are
+corporate sentiment and GHG emissions detailed below. 
+1. Implementation Timeline
+   - It takes time for changes to be reflected once they are
 announced. For example, if a given plan is announced it may take an
-entire year for the change to be reflected in the data. 2. Mergers and
-Acquisitions - When companies merge or are acquired by others, there can
+entire year for the change to be reflected in the data.
+2. Mergers and Acquisitions
+   - When companies merge or are acquired by others, there can
 be an effect in the emission measurement. Relocation also plays a factor
 in emissions measurements whether it could be an increase, decrease, or
 loss of data.
@@ -311,17 +313,18 @@ phenomenon across a longer time frame with emissions data.
 # 6. Future Plans
 
 Our future plans for this project are vast, but some ways that we can
-proceed have been detailed below. 1. Industry Specific Research - Moving
-forward we could analyze sector specific patterns, and see if different
+proceed have been detailed below. 
+
+1. Industry Specific Research
+   - Moving forward we could analyze sector specific patterns, and see if different
 sectors have different correlations between GHG and corporate sentiment
-2. Increased Timeframe and Firms - This data processing handling
-requires a lot of computing power, so with some more powerful computing
-resources we may be able to expand our research across many more firms
-and years, ultimately making our findings more reliable. 3. Policy
-Influence - Another way to move forward includes researching more about
-policy changes and how they effect corporate sentiment. How effective
-are current disclosure policies? Do changes in these policies also
-change corporate sentiment?
+
+2. Increased Timeframe and Firms
+   - This data processing handling requires a lot of computing power, so with some more powerful computing
+resources we may be able to expand our research across many more firms and years, ultimately making our findings more reliable.
+
+3. Policy Influence
+   - Another way to move forward includes researching more about policy changes and how they effect corporate sentiment. How effective are current disclosure policies? Do changes in these policies also change corporate sentiment?
 
 # 7. References
 
