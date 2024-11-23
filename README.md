@@ -116,7 +116,7 @@ companies to only consider ones that are publicly traded. This ensures
 that they will be in the SEC EDGAR database since this database only has
 companies that are publicly traded. This task produced one spreadsheet
 of sentences for the past 13 years for each of the 100 FLIGHT companies
-yielding 1,300 spreadsheets.
+yielding 1,300 spreadsheets. 
 
 ## 3.3 BERT
 
@@ -157,6 +157,11 @@ Crisis”, section 201 of E.O. 14008, “Tackling the Climate Crisis at Home
 and Abroad”, and at the Leaders Summit on Climate.” The model
 successfully parsed through this sentence was trained to identify this
 as a sentence regarding net zero emissions.
+
+To summarize: 
+- The outcome variable is GHG emissions
+- The dependent Variable is Corporate Sentiment score
+- The frequency is year and geographical unit is each company
 
 # 4. Summary
 
