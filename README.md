@@ -138,7 +138,7 @@ variable. Thus, once the entire csv has been ran through the model a new
 csv with classifications and confidence scores has been produced. Now,
 we are able to draw conclusions and make claims regarding companies
 communications regarding net zero reduction and their actual greenhouse
-gas emissions. After the whole csv has been processe we can compare the
+gas emissions. After the whole csv has been processed we can compare the
 sentences classified as reduction and compare that to the total number
 of sentences. This will then provide a ratio which we can compare with
 any company along with their greenhouse gas emissions. The most crucial
