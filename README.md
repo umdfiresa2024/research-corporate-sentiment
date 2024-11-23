@@ -1,5 +1,4 @@
-# Do changes in environmental corporate sentiment correlate with changes
-# in GHG levels?
+# Do changes in environmental corporate sentiment correlate with changes in GHG levels?
 FIRE Sustainability Analytics
 2024-11-22
 
