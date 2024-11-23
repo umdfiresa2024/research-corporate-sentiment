@@ -23,7 +23,10 @@ more accountable for their communications of their environmental
 impacts. By examining greenhouse gas emissions reported to the EPA’s
 FLIGHT database, we can narrow our focus to directly connecting a
 company’s sentiment of their pollution to the actual emissions they
-generate.
+generate. We can focus on this sentiment through closely examining the 
+10-K reports of these companies in order to detect their environmental
+sentiment compared to their actual greenhouse gas emission output.
+
 
 # 2. Literature Review
 
