@@ -24,7 +24,9 @@ FLIGHT database, we can narrow our focus to directly connecting a
 company’s sentiment of their pollution to the actual emissions they
 generate. We can focus on this sentiment through closely examining the 
 10-K reports of these companies in order to detect their environmental
-sentiment compared to their actual greenhouse gas emission output.
+sentiment compared to their actual greenhouse gas emission output. 
+
+Our research boils down to three main parts. We had three main data sources wich starts with the EPA Flight data to rack the greenhouse gas emissions from large facilities. Then, we have the SEC EDGAR 10-k reports which captures the communications made by these companies, and ClimateBERT which is utilized to classify environmental sentiment present in these communications. We started with 11,000 companies from the FLIGHT data which was then narrowed down to 100 publicly traded companies that had 13 years worth of emissions data and 10-k filing statements. Lastly, using ClimateBERT's net-zero/reduction model we were able to classify these sentences and compare this with the greenhouse gas emission data we have. 
 
 
 # 2. Literature Review
