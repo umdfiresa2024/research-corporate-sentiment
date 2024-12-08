@@ -107,6 +107,25 @@ will be referenced in SEC EDGAR. Relating the GHG emissions from these
 companies from the past 13 years to corporate sentiment from SEC EDGAR
 10-K reports, a score can be determined for each company.
 
+```
+for (i in 7033:dim(flight.name)[1]) {
+  print(i)
+  
+  distmatrix <- stringdist::stringdistmatrix(flight.name[i,1], 
+                                             chat.name[1:2578], 
+                                             method = 'lcs', p = 0.1)
+  
+  best_fit <- apply(distmatrix, 1, which.min)
+  similarity <- apply(distmatrix, 1, min)
+  output<-as.data.frame(cbind(flight.name[i,1], 
+                              chat.name[best_fit], 
+                              round(similarity,3)))
+  flight_output<-rbind(flight_output, output)
+}
+```
+The above code uses string distance matching to pair company names from Chat GPT
+to the names on the FLIGHT database in order to merge the two data frames. For
+the most accurate results, only perfect matches were used.
 ## 3.2 SEC EDGAR
 
 10-K documents summarize a company’s financial performance and other
