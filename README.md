@@ -1,8 +1,8 @@
-# Do changes in environmental corporate sentiment correlate with changes in GHG levels?
-### FIRE Sustainability Analytics
-### 2024-12-08
-### Sohum Desai, Josh Hildebrand, Abhinav Akenapalli
-
+# Do changes in environmental corporate sentiment correlate with changes
+in GHG levels?
+FIRE Sustainability Analytics - Joshua Hildebrand, Sohum Desai, Abhinav
+Akenapalli
+2024-01-01
 
 # 1. Introduction
 
@@ -24,12 +24,21 @@ more accountable for their communications of their environmental
 impacts. By examining greenhouse gas emissions reported to the EPA’s
 FLIGHT database, we can narrow our focus to directly connecting a
 company’s sentiment of their pollution to the actual emissions they
-generate. We can focus on this sentiment through closely examining the 
+generate. We can focus on this sentiment through closely examining the
 10-K reports of these companies in order to detect their environmental
-sentiment compared to their actual greenhouse gas emission output. 
+sentiment compared to their actual greenhouse gas emission output.
 
-Our research boils down to three main parts. We had three main data sources which starts with the EPA Flight data to rack the greenhouse gas emissions from large facilities. Then, we have the SEC EDGAR 10-k reports which captures the communications made by these companies, and ClimateBERT which is utilized to classify environmental sentiment present in these communications. We started with 11,000 companies from the FLIGHT data which was then narrowed down to 100 publicly traded companies that had 13 years worth of emissions data and 10-k filing statements. Lastly, using ClimateBERT's net-zero/reduction model we were able to classify these sentences and compare this with the greenhouse gas emission data we have. 
-
+Our research boils down to three main parts. We had three main data
+sources which starts with the EPA Flight data to rack the greenhouse gas
+emissions from large facilities. Then, we have the SEC EDGAR 10-k
+reports which captures the communications made by these companies, and
+ClimateBERT which is utilized to classify environmental sentiment
+present in these communications. We started with 11,000 companies from
+the FLIGHT data which was then narrowed down to 100 publicly traded
+companies that had 13 years worth of emissions data and 10-k filing
+statements. Lastly, using ClimateBERT’s net-zero/reduction model we were
+able to classify these sentences and compare this with the greenhouse
+gas emission data we have.
 
 # 2. Literature Review
 
@@ -37,27 +46,28 @@ Our research boils down to three main parts. We had three main data sources whic
   commitments and ‘cheap talk’. Current research concludes that firms
   with poor environmental action tend to communicate more environmental
   goals to “distract from poor performance” (Preuss & Max, 2023). This
-  study focused on firms that were a part of the S&P 500 during the time
-  of the sample space which was from 2010 to 2020. The reasoning behind this is that firms part of
-  The S&P 500 were more likely to issue sociopolitical statements and
-  are more likely to have PAC (Political Action Committees) contributions compared to smaller firms
-  (Preuss & Max, 2023). This means that policies that intend to generate
-  environmental commitments need to require clarity from companies if
-  they want genuine environmental communications from companies.
-  
-  Identifying specific and genuine environmental communications has been
+  study focused on firms that were a part of the S&P 500 betwen 2010
+  and 2020. The reasoning behind this is that firms part of The S&P 500
+  were more likely to issue sociopolitical statements and are more
+  likely to have political action committee (PAC) contributions compared
+  to smaller firms (Preuss & Max, 2023). This means that policies that
+  intend to generate environmental commitments need to require clarity
+  from companies if they want genuine environmental communications from
+  companies.
+
+- Identifying specific and genuine environmental communications has been
   done through ClimateBERT’s environmental claims detection model. Given
-  their large data set, they decided to not manually verify if each
-  statement contained a keyword, but instead they focused on generating
-  n-grams which were 2-4 words in length. From here the study generated
-  measures of sociopolitical claims per topic. Both of these
+  Preuss & Max’s large data set of annual reports, shareholder
+  preposals, and press releases, they decided to not manually verify if
+  each statement contained a keyword, but instead they focused on
+  generating n-grams which were 2-4 words in length. From here the study
+  generated measures of sociopolitical claims per topic. Both of these
   measurements were based on the frequency of these n-grams within the
   sample data. The first measure was the number of times any n-gram
   appeared in the corporate filings data they collected and the second
   measure docs counted the number of documents per year that included
   two distinct environmental related n-grams. These measurements were
-  the foundation to the conclusions and claims of the study. To clarify,
-  these last sentences reference the input which can be fed into the ClimateBERT model for classification. 
+  the foundation to the conclusions and claims of the study.
 
 - Our research uses the zero-emissions BERT large language model created
   by (Bingler et al. 2024), to detect sentences with planned GHG
@@ -107,45 +117,6 @@ will be referenced in SEC EDGAR. Relating the GHG emissions from these
 companies from the past 13 years to corporate sentiment from SEC EDGAR
 10-K reports, a score can be determined for each company.
 
-```ruby
-for (i in 7033:dim(flight.name)[1]) {
-  print(i)
-  
-  distmatrix <- stringdist::stringdistmatrix(flight.name[i,1], 
-                                             chat.name[1:2578], 
-                                             method = 'lcs', p = 0.1)
-  
-  best_fit <- apply(distmatrix, 1, which.min)
-  similarity <- apply(distmatrix, 1, min)
-  output<-as.data.frame(cbind(flight.name[i,1], 
-                              chat.name[best_fit], 
-                              round(similarity,3)))
-  flight_output<-rbind(flight_output, output)
-}
-```
-The above code uses string distance matching to pair company names from Chat GPT
-to the names on the FLIGHT database in order to merge the two data frames. For
-the most accurate results, only perfect matches were used. The code below
-shows the merging process.
-```ruby
-library("plyr")
-df<-read.csv("match_flight1.csv")
-f<-as.data.frame(rbind.fill(df, flight_output)) |>
-  filter(V3==0) |>
-  dplyr::select(V1, V2)
-
-names(f)<-c("flight", "company")
-
-merged <- merge(f, chat, by = "company")
-
-tick<-unique(merged$ticker)
-
-write.csv(tick, "flight_tickers.csv", row.names=F)
-
-grouped_merge <- merged %>% 
-  group_by(ticker, year) %>%
-  summarize(GHG=sum(GHG))
-```
 ## 3.2 SEC EDGAR
 
 10-K documents summarize a company’s financial performance and other
@@ -159,7 +130,207 @@ companies to only consider ones that are publicly traded. This ensures
 that they will be in the SEC EDGAR database since this database only has
 companies that are publicly traded. This task produced one spreadsheet
 of sentences for the past 13 years for each of the 100 FLIGHT companies
-yielding 1,300 spreadsheets. 
+yielding 1,300 spreadsheets.
+
+``` r
+library('tidyverse')
+library('data.table')
+library('rvest')
+library('httr')
+
+symbol_table <- as.data.frame(read.csv('unique_tickers_only.csv'))
+symbol<-read.csv('flight_tickers.csv', header = TRUE) |>
+  filter(!str_detect(x,"N/A")) |> 
+  filter(!str_detect(x, " ")) |>
+  filter(!str_detect(x,"\\."))
+
+
+try_scrape_parse <- function(i){
+  tryCatch({
+    
+url <- paste0("http://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=", 
+              symbol$x[i], "&type=10-k&dateb=&owner=exclude&count=100")
+
+# Scrape filing page identfier numbers
+response <- GET(url,add_headers(
+  "User-Agent" = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36",
+  "Accept-Language" = "en-US,en;q=0.5",
+  "Accept" = "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8",
+  "Accept-Encoding" = "gzip, deflate, br",
+  "Referer" = "https://www.sec.gov/",
+  "Connection" = "keep-alive",
+  "DNT" = "1",  # Do Not Track
+  "Upgrade-Insecure-Requests" = "1"))
+if (status_code(response) == 200) {
+  company_info <- 
+    read_html(response) %>%
+    html_nodes(xpath='//*[@id="contentDiv"]/div[1]/div[3]/span/a')
+  #html_table() %>%
+  #as.data.table() %>%
+  #janitor::clean_names()
+  cik_number <- sub(".*CIK=(\\d{10}).*", "\\1", company_info)
+} else {
+  print(paste("Failed to retrieve 1st Response page. Status code:", status_code(doc)))
+}
+if (status_code(response) == 200) {
+  filings <- 
+    read_html(response) %>%
+    html_nodes(xpath='//*[@id="seriesDiv"]/table') %>%
+    html_table() %>%
+    as.data.table() %>%
+    janitor::clean_names()
+} else {
+  print(paste("Failed to retrieve 1st Response page. Status code:", status_code(doc)))
+}
+
+# Drop pre XBRL filings
+filings <- filings[str_detect(format, "Interactive")]
+
+# Extract filings identifiers with regex match of digits
+pattern <- "\\d{10}\\-\\d{2}\\-\\d{6}"
+filings <- filings$description
+filings <- 
+  stringr::str_extract(filings, pattern)
+
+# Build urls for filings using filing numbers and Edgar's url structure
+urls <-
+  sapply(filings, function(filing) {
+    
+    # Rebuild URL to match Edgar format
+    url <- 
+      paste0(
+        "https://www.sec.gov/Archives/edgar/data/",cik_number,"/",
+        paste0(
+          str_remove_all(filing, "-"),"/"),
+        paste0(
+          filing, "-index.htm"),
+        sep="")
+    
+    # Return Url
+    url
+  })
+# Extract hrefs with links to 10-K filings
+aapl_href <-
+  sapply(urls, function(url) {
+    
+    # Pattern tomatch
+    href <- '//*[@id="formDiv"]/div/table'
+    response <- GET(url,add_headers(
+      "User-Agent" = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36",
+      "Accept-Language" = "en-US,en;q=0.5",
+      "Accept" = "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8",
+      "Accept-Encoding" = "gzip, deflate, br",
+      "Referer" = "https://www.sec.gov/",
+      "Connection" = "keep-alive",
+      "DNT" = "1",  # Do Not Track
+      "Upgrade-Insecure-Requests" = "1"))
+    
+    if (status_code(response) == 200) {
+      # Table of XBRL Documents
+      page <- 
+        read_html(response) %>%
+        xml_nodes('.tableFile') %>%
+        html_table()
+    } else {
+      print(paste("Failed to retrieve 2nd Response page. Status code:", status_code(response)))
+    }
+
+    # Extract document 
+    page <- rbindlist(page)
+    document <- 
+      page[str_detect(page$Type, "10-K")]$Document
+    
+    # Take break not to overload Edgar
+    Sys.sleep(2)
+    
+    # Reconstite as href link
+    href <- 
+      paste0(str_remove(url, "\\d{18}.*$"), 
+             str_extract(url, "\\d{18}"),
+             "/",
+             document)
+    href <- href %>%
+      str_replace_all('iXBRL', '') %>%
+      str_trim()
+    
+    # Return
+    href
+    
+  })
+
+aapl_href <- lapply(aapl_href, function(x) {
+  result <- x[str_detect(x, "htm$")]
+  if (length(result) == 0) character(0) else result
+})
+
+# Show first 5 hrefs
+#aapl_href[1:5]
+#dir.create('AAPL_Scraped_Parsed')
+
+for( j in 1:length(aapl_href)){
+  response <- GET(as.character(aapl_href[j]),add_headers(
+    "User-Agent" = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36",
+    "Accept-Language" = "en-US,en;q=0.5",
+    "Accept" = "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8",
+    "Accept-Encoding" = "gzip, deflate, br",
+    "Referer" = "https://www.sec.gov/",
+    "Connection" = "keep-alive",
+    "DNT" = "1",  # Do Not Track
+    "Upgrade-Insecure-Requests" = "1"))
+  
+  if (status_code(response) == 200) {
+    # Table of XBRL Documents
+    doc <- read_html(response)
+    
+  } else {
+    print(paste("Failed to retrieve Response3 page. Status code:", status_code(response)))
+  }
+
+  
+  # Using read_html(response)
+  paragraphs<-doc %>%
+    rvest::html_nodes("p, div") %>%
+    rvest::html_text()
+  
+  textfile<-str_split(paragraphs,
+                      "(?<!\\b(?:Mrs|Mr|Dr|Inc|Ms|Ltd|No|[A-Z])\\.)(?<=\\.|\\?|!)\\s+", 
+                      simplify = TRUE) 
+  textfile <- matrix(paste(textfile))
+  p<-as.data.frame(textfile)
+  
+  p2<-p %>%
+    mutate(charlength=nchar(V1)) %>%
+    mutate(first=substr(V1, 1, 1)) %>%
+    filter(str_detect(first, "^[A-Z]")) %>%
+    mutate("White spaces" = str_count(V1, " ")) %>%
+    mutate("Non-breaking space character" = str_count(V1, "\u00A0"))
+  
+  p3<-p2 %>%
+    filter(`Non-breaking space character`<20)%>%
+    filter(`charlength` > 30 & str_ends(V1,"\\.")) %>%
+    select(V1)
+  
+  filename <- unlist(str_split(names(aapl_href[j]), "-"))[2]
+  write.csv(p3, 
+            paste0("G:/Shared drives/2024 FIRE-SA/DATA/Companies_Scraped(2)/", 
+                       symbol$x[i], "_", filename, ".csv"))
+}
+},
+  error = function(e){
+    message(paste0("An error occurred at ", i," ", symbol$x[i]))
+    print(e)
+  },
+  warning = function(w){
+    message(paste0("A warning occurred at ", i, " ", symbol$x[i]))
+    print(w)
+    return(NA)
+  })
+}
+for (i in 2:nrow(symbol)) {
+  try_scrape_parse(i)
+}
+try_scrape_parse(1)
+```
 
 ## 3.3 BERT
 
@@ -173,24 +344,21 @@ zero reduction model. This model is a fine tuned version of the
 climateBERT model, and is able to classify if statements are either
 related to emission net zero or reduction targets (ChatClimate - About,
 n.d.). Thus, this model is an improved version of both the DistilRoBERT
-model as well as the original climateBERT model. 
-
-Basically the way we use this model, is we input a csv file of fragmented or whole sentences
+model as well as the original climateBERT model. Basically the way we
+use this model, is we input a csv file of fragmented or whole sentences
 into this net zero reduction model and one by one the model will return
 a classification along with a confidence score which is our dependent
 variable. Thus, once the entire csv has been ran through the model a new
-csv with classifications and confidence scores has been produced. 
-
-Now, we are able to draw conclusions and make claims regarding companies
+csv with classifications and confidence scores has been produced. Now,
+we are able to draw conclusions and make claims regarding companies
 communications regarding net zero reduction and their actual greenhouse
 gas emissions. After the whole csv has been processed we can compare the
 sentences classified as reduction and compare that to the total number
 of sentences. This will then provide a ratio which we can compare with
 any company along with their greenhouse gas emissions. The most crucial
 part of this is that the ratio we calculate represent the fraction of
-sentences with net-zero commitments. 
-
-An example sentence which was identified as net-zero is: “After reconsidering the arguments for the
+sentences with net-zero commitments. An example sentence which was
+identified as net-zero is: “After reconsidering the arguments for the
 2018 final rule and finding them lacking, FHWA proposed to require State
 DOTs and MPOs that have NHS mileage within their State geographic
 boundaries and metropolitan planning area boundaries, respectively, to
@@ -204,34 +372,9 @@ and Abroad”, and at the Leaders Summit on Climate.” The model
 successfully parsed through this sentence was trained to identify this
 as a sentence regarding net zero emissions.
 
-```
-sentiment = []
-classifications = []
-
-# Process each text entry
-for text in df['V1'].tolist():
-  try:
-      result = pipe_env(text)
-      sentiment.append(result)
-      classifications.append(result[0]['label'])
-  except Exception as e:
-      print(f"Error processing text in {path}: {str(e)}")
-      classifications.append("error")
-      sentiment.append(None)
-
-# Create results DataFrame
-df_results = pd.DataFrame({
-'text': df['V1'].tolist(),
-'classification': classifications
-})
-```
-
-In this code we can see a for loop which iterates through the dataframe, sentence by sentence, and classifies it passing the text as a parameter into pipe_env(). This is the most crucial step in the code as this is where each sentence is being passed into ClimateBERT. The return value is the classification and then we can append this to the array and generate a results dataframe containing these results. Also, it's important to note that we implemented a try catch block so that if any errors occur during classification, we can simply have "error" as the classification. 
-
-To summarize: 
-- The outcome variable is GHG emissions
-- The dependent Variable is Corporate Sentiment score
-- The frequency is year and geographical unit is each company
+To summarize: - The outcome variable is GHG emissions - The dependent
+Variable is Corporate Sentiment score - The frequency is year and
+geographical unit is each company
 
 # 4. Summary
 
@@ -252,7 +395,6 @@ computing ratio of reduction sentences to total sentences in the 10-K
 report and connected them to the quantity of GHG emissions for each year
 as reported on EPA FLIGHT database.
 
-
 ## 4.2 Plot
 
 ![GHG per year plot](GHG_year.png) This plot shows the GHG per year for
@@ -261,9 +403,9 @@ each of the 15 companies.
 ![Reduction plot](reduction_GHG.png) This plot shows the number of
 reductions according to each GHG value for each of the 15 companies.
 
-![Correlation plot](Poster%20Stuff/correlation.png)
-
-![Coefficient plot](Poster%20Stuff/coefficients.png)
+![Correlation plot](Poster%20Stuff/correlation.png) This plot shows the
+relationship between corporate sentiment and GHG emissions for each
+company.
 
 ## 4.3 Empirical Analysis and Linear Regression
 
@@ -337,6 +479,8 @@ summary(m1)
     RMSE: 2,913,161.3     Adj. R2: 0.713618
                         Within R2: 0.369347
 
+![Coefficient plot](Poster%20Stuff/coefficients.png)
+
 # 5. Discussion
 
 ## 5.1 Findings
@@ -365,13 +509,11 @@ emission in these times.
 ## 5.3 Mechanisms
 
 There are various mechanisms that drive this correlation between
-corporate sentiment and GHG emissions detailed below. 
-1. Implementation Timeline
-   - It takes time for changes to be reflected once they are
+corporate sentiment and GHG emissions detailed below. 1. Implementation
+Timeline - It takes time for changes to be reflected once they are
 announced. For example, if a given plan is announced it may take an
-entire year for the change to be reflected in the data.
-2. Mergers and Acquisitions
-   - When companies merge or are acquired by others, there can
+entire year for the change to be reflected in the data. 2. Mergers and
+Acquisitions - When companies merge or are acquired by others, there can
 be an effect in the emission measurement. Relocation also plays a factor
 in emissions measurements whether it could be an increase, decrease, or
 loss of data.
@@ -387,18 +529,22 @@ phenomenon across a longer time frame with emissions data.
 # 6. Future Plans
 
 Our future plans for this project are vast, but some ways that we can
-proceed have been detailed below. 
+proceed have been detailed below.
 
-1. Industry Specific Research
-   - Moving forward we could analyze sector specific patterns, and see if different
-sectors have different correlations between GHG and corporate sentiment
-
-2. Increased Timeframe and Firms
-   - This data processing handling requires a lot of computing power, so with some more powerful computing
-resources we may be able to expand our research across many more firms and years, ultimately making our findings more reliable.
-
-3. Policy Influence
-   - Another way to move forward includes researching more about policy changes and how they effect corporate sentiment. How effective are current disclosure policies? Do changes in these policies also change corporate sentiment?
+1.  Industry Specific Research
+    - Moving forward we could analyze sector specific patterns, and see
+      if different sectors have different correlations between GHG and
+      corporate sentiment
+2.  Increased Timeframe and Firms
+    - This data processing handling requires a lot of computing power,
+      so with some more powerful computing resources we may be able to
+      expand our research across many more firms and years, ultimately
+      making our findings more reliable.
+3.  Policy Influence
+    - Another way to move forward includes researching more about policy
+      changes and how they effect corporate sentiment. How effective are
+      current disclosure policies? Do changes in these policies also
+      change corporate sentiment?
 
 # 7. References
 
