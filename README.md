@@ -1,6 +1,8 @@
 # Do changes in environmental corporate sentiment correlate with changes in GHG levels?
 FIRE Sustainability Analytics
+Sohum Desai, Josh Hildebrand, Abhinav Akenapalli
 2024-11-22
+
 
 # 1. Introduction
 
@@ -36,12 +38,13 @@ Our research boils down to three main parts. We had three main data sources whic
   with poor environmental action tend to communicate more environmental
   goals to “distract from poor performance” (Preuss & Max, 2023). This
   study focused on firms that were a part of the S&P 500 during the time
-  of the sample space. The reasoning behind this is that firms part of
+  of the sample space which was from 2010 to 2020. The reasoning behind this is that firms part of
   The S&P 500 were more likely to issue sociopolitical statements and
-  are more likely to have PAC contributions compared to smaller firms
+  are more likely to have PAC (Political Action Committees) contributions compared to smaller firms
   (Preuss & Max, 2023). This means that policies that intend to generate
   environmental commitments need to require clarity from companies if
   they want genuine environmental communications from companies.
+  
   Identifying specific and genuine environmental communications has been
   done through ClimateBERT’s environmental claims detection model. Given
   their large data set, they decided to not manually verify if each
@@ -53,7 +56,8 @@ Our research boils down to three main parts. We had three main data sources whic
   appeared in the corporate filings data they collected and the second
   measure docs counted the number of documents per year that included
   two distinct environmental related n-grams. These measurements were
-  the foundation to the conclusions and claims of the study.
+  the foundation to the conclusions and claims of the study. To clarify,
+  these last sentences reference the input which can be fed into the ClimateBERT model for classification. 
 
 - Our research uses the zero-emissions BERT large language model created
   by (Bingler et al. 2024), to detect sentences with planned GHG
