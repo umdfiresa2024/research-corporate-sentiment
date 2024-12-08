@@ -125,7 +125,27 @@ for (i in 7033:dim(flight.name)[1]) {
 ```
 The above code uses string distance matching to pair company names from Chat GPT
 to the names on the FLIGHT database in order to merge the two data frames. For
-the most accurate results, only perfect matches were used.
+the most accurate results, only perfect matches were used. The code below
+shows the merging process.
+```
+library("plyr")
+df<-read.csv("match_flight1.csv")
+f<-as.data.frame(rbind.fill(df, flight_output)) |>
+  filter(V3==0) |>
+  dplyr::select(V1, V2)
+
+names(f)<-c("flight", "company")
+
+merged <- merge(f, chat, by = "company")
+
+tick<-unique(merged$ticker)
+
+write.csv(tick, "flight_tickers.csv", row.names=F)
+
+grouped_merge <- merged %>% 
+  group_by(ticker, year) %>%
+  summarize(GHG=sum(GHG))
+```
 ## 3.2 SEC EDGAR
 
 10-K documents summarize a company’s financial performance and other
