@@ -130,21 +130,24 @@ zero reduction model. This model is a fine tuned version of the
 climateBERT model, and is able to classify if statements are either
 related to emission net zero or reduction targets (ChatClimate - About,
 n.d.). Thus, this model is an improved version of both the DistilRoBERT
-model as well as the original climateBERT model. Basically the way we
-use this model, is we input a csv file of fragmented or whole sentences
+model as well as the original climateBERT model. 
+
+Basically the way we use this model, is we input a csv file of fragmented or whole sentences
 into this net zero reduction model and one by one the model will return
 a classification along with a confidence score which is our dependent
 variable. Thus, once the entire csv has been ran through the model a new
-csv with classifications and confidence scores has been produced. Now,
-we are able to draw conclusions and make claims regarding companies
+csv with classifications and confidence scores has been produced. 
+
+Now,we are able to draw conclusions and make claims regarding companies
 communications regarding net zero reduction and their actual greenhouse
 gas emissions. After the whole csv has been processed we can compare the
 sentences classified as reduction and compare that to the total number
 of sentences. This will then provide a ratio which we can compare with
 any company along with their greenhouse gas emissions. The most crucial
 part of this is that the ratio we calculate represent the fraction of
-sentences with net-zero commitments. An example sentence which was
-identified as net-zero is: “After reconsidering the arguments for the
+sentences with net-zero commitments. 
+
+An example sentence which was identified as net-zero is: “After reconsidering the arguments for the
 2018 final rule and finding them lacking, FHWA proposed to require State
 DOTs and MPOs that have NHS mileage within their State geographic
 boundaries and metropolitan planning area boundaries, respectively, to
