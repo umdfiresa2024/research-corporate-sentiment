@@ -1,7 +1,7 @@
 # Do changes in environmental corporate sentiment correlate with changes in GHG levels?
 FIRE Sustainability Analytics
-Sohum Desai, Josh Hildebrand, Abhinav Akenapalli
 2024-11-22
+Sohum Desai, Josh Hildebrand, Abhinav Akenapalli
 
 
 # 1. Introduction
