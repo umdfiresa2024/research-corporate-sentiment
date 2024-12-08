@@ -107,7 +107,7 @@ will be referenced in SEC EDGAR. Relating the GHG emissions from these
 companies from the past 13 years to corporate sentiment from SEC EDGAR
 10-K reports, a score can be determined for each company.
 
-```
+```ruby
 for (i in 7033:dim(flight.name)[1]) {
   print(i)
   
@@ -127,7 +127,7 @@ The above code uses string distance matching to pair company names from Chat GPT
 to the names on the FLIGHT database in order to merge the two data frames. For
 the most accurate results, only perfect matches were used. The code below
 shows the merging process.
-```
+```ruby
 library("plyr")
 df<-read.csv("match_flight1.csv")
 f<-as.data.frame(rbind.fill(df, flight_output)) |>
