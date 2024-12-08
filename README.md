@@ -252,7 +252,6 @@ computing ratio of reduction sentences to total sentences in the 10-K
 report and connected them to the quantity of GHG emissions for each year
 as reported on EPA FLIGHT database.
 
-![Data Summary Chart](Summary.png)
 
 ## 4.2 Plot
 
