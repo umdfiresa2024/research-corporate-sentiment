@@ -138,7 +138,7 @@ a classification along with a confidence score which is our dependent
 variable. Thus, once the entire csv has been ran through the model a new
 csv with classifications and confidence scores has been produced. 
 
-Now,we are able to draw conclusions and make claims regarding companies
+Now, we are able to draw conclusions and make claims regarding companies
 communications regarding net zero reduction and their actual greenhouse
 gas emissions. After the whole csv has been processed we can compare the
 sentences classified as reduction and compare that to the total number
@@ -160,6 +160,30 @@ Crisis”, section 201 of E.O. 14008, “Tackling the Climate Crisis at Home
 and Abroad”, and at the Leaders Summit on Climate.” The model
 successfully parsed through this sentence was trained to identify this
 as a sentence regarding net zero emissions.
+
+```
+sentiment = []
+classifications = []
+
+# Process each text entry
+for text in df['V1'].tolist():
+  try:
+      result = pipe_env(text)
+      sentiment.append(result)
+      classifications.append(result[0]['label'])
+  except Exception as e:
+      print(f"Error processing text in {path}: {str(e)}")
+      classifications.append("error")
+      sentiment.append(None)
+
+# Create results DataFrame
+df_results = pd.DataFrame({
+'text': df['V1'].tolist(),
+'classification': classifications
+})
+```
+
+In this code we can see a for loop which iterates through the dataframe, sentence by sentence, and classifies it passing the text as a parameter into pipe_env(). This is the most crucial step in the code as this is where each sentence is being passed into ClimateBERT. The return value is the classification and then we can append this to the array and generate a results dataframe containing these results. Also, it's important to note that we implemented a try catch block so that if any errors occur during classification, we can simply have "error" as the classification. 
 
 To summarize: 
 - The outcome variable is GHG emissions
