@@ -479,7 +479,9 @@ summary(m1)
     RMSE: 2,913,161.3     Adj. R2: 0.713618
                         Within R2: 0.369347
 
-![Coefficient plot](Poster%20Stuff/coefficients.png)
+![Coefficient plot](Poster%20Stuff/coefficients.png) This graph shows
+95% confidence intervals for the correlation between corporate sentiment
+and GHG emissions for each company.
 
 # 5. Discussion
 
