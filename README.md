@@ -1,4 +1,5 @@
-# Do changes in environmental corporate sentiment correlate with changes in GHG levels?
+# Do changes in environmental corporate sentiment correlate with changes
+in GHG levels?
 FIRE Sustainability Analytics - Joshua Hildebrand, Sohum Desai, Abhinav
 Akenapalli
 2024-01-01
@@ -101,86 +102,20 @@ set, the environmental impact of each company can be quantified. In
 order to match these companies, to 10-K reports, the company list from
 FLIGHT is fed into Chat GPT. The intuition is simple: companies that can
 be associated with a stock ticker will be in the SEC EDGAR database. For
-this reason, 11,000 companies were fed into ChatGPT to determine if
+this reason, 11,000 companies were fed into CHAT GPT to determine if
 each company had a ticker. The output was each company’s name and a
 stock ticker or N/A if a ticker was not found. Chat GPT found 2578
-companies with a ticker. Using a string distance library, the ChatGPT
+companies with a ticker. Using a string distance library, the Chat GPT
 output was merged with FLIGHT data to link GHG emissions with these
 tickers. The string distance library was used to narrow down companies
-that were repeats or companies that were not even in FLIGHT that ChatGPT
-may have unintentionally added. Next, the number of years for each
+that were repeats or companies that were not even in FLIGHT that Chat
+GPT may have unintentionally added. Next, the number of years for each
 company was examined. To keep data uniform and allow for the most
 specific data, it was determined that only companies with 13 years of
 data will be used in our data. The final result is 100 companies that
 will be referenced in SEC EDGAR. Relating the GHG emissions from these
 companies from the past 13 years to corporate sentiment from SEC EDGAR
 10-K reports, a score can be determined for each company.
-
-The below code shows the process of merging the tickers from ChatGPT to
-the company names gathered from the EPA FLIGHT database. This begins with
-loading the csv files containing the tickers found through ChatGPT. This
-code ensures that all data points are strings in order to use string
-distance matching.
-
-``` r
-chat<-rbind(chatgpt_output, chatgpt_output2, chatgpt_output3) |>
-  filter(ticker!="N/A")
-
-library("stringi")
-
-flight.name<-as.data.frame(raw_flight$x)
-names(flight.name)<-"flight.name"
-chat.name<-chat$company
-chat.name <-stri_encode(chat.name, "","UTF-8")
-```
-
-The below code snippet utilizes string distance matching to properly
-merge the company names to tickers. We do this because some of the 
-company names given by ChatGPT corresponding to the tickers do not
-directly match the EPA FLIGHT company names.
-
-``` r
-flight_output <- c()
-for (i in 7033:dim(flight.name)[1]) {
-  print(i)
-  
-  distmatrix <- stringdist::stringdistmatrix(flight.name[i,1], 
-                                             chat.name[1:2578], 
-                                             method = 'lcs', p = 0.1)
-  
-  best_fit <- apply(distmatrix, 1, which.min)
-  similarity <- apply(distmatrix, 1, min)
-  output<-as.data.frame(cbind(flight.name[i,1], 
-                              chat.name[best_fit], 
-                              round(similarity,3)))
-  flight_output<-rbind(flight_output, output)
-}
-```
-
-The data was then filtered to strings that were exact matches (V3 == 0).
-This data was then merged with the EPA FLIGHT database to get the matched
-output dataframe.
-
-``` r
-install.packages("plyr")
-library("plyr")
-df<-read.csv("match_flight1.csv")
-f<-as.data.frame(rbind.fill(df, flight_output)) |>
-  filter(V3==0) |>
-  dplyr::select(V1, V2)
-
-names(f)<-c("flight", "company")
-
-merged <- merge(f, chat, by = "company")
-
-tick<-unique(merged$ticker)
-
-write.csv(tick, "flight_tickers.csv", row.names=F)
-
-grouped_merge <- merged %>% 
-  group_by(ticker, year) %>%
-  summarize(GHG=sum(GHG))
-```
 
 ## 3.2 SEC EDGAR
 
@@ -409,16 +344,12 @@ zero reduction model. This model is a fine tuned version of the
 climateBERT model, and is able to classify if statements are either
 related to emission net zero or reduction targets (ChatClimate - About,
 n.d.). Thus, this model is an improved version of both the DistilRoBERT
-model as well as the original climateBERT model. 
-
-Basically the way we
+model as well as the original climateBERT model. Basically the way we
 use this model, is we input a csv file of fragmented or whole sentences
 into this net zero reduction model and one by one the model will return
 a classification along with a confidence score which is our dependent
 variable. Thus, once the entire csv has been ran through the model a new
-csv with classifications and confidence scores has been produced. 
-
-Now,
+csv with classifications and confidence scores has been produced. Now,
 we are able to draw conclusions and make claims regarding companies
 communications regarding net zero reduction and their actual greenhouse
 gas emissions. After the whole csv has been processed we can compare the
@@ -426,9 +357,7 @@ sentences classified as reduction and compare that to the total number
 of sentences. This will then provide a ratio which we can compare with
 any company along with their greenhouse gas emissions. The most crucial
 part of this is that the ratio we calculate represent the fraction of
-sentences with net-zero commitments. 
-
-An example sentence which was
+sentences with net-zero commitments. An example sentence which was
 identified as net-zero is: “After reconsidering the arguments for the
 2018 final rule and finding them lacking, FHWA proposed to require State
 DOTs and MPOs that have NHS mileage within their State geographic
@@ -452,7 +381,7 @@ geographical unit is each company
 ## 4.1 Data Cleansing Chart
 
 ![Data Cleansing
-Chart](Poster%20Stuff/Copy%20of%20Data%20Cleansing%20Chart%20Corporate%20Sentiment.png)
+Chart](Poster%20Stuff/Copy%20of%20Data%20Cleansing%20Chart%20Corporate%20Sentiment%20(2).png)
 
 Only publicly traded companies are required to report 10-K statements.
 Thus, we parsed through each company in our EPA FLIGHT company list to

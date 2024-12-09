@@ -243,7 +243,7 @@ To summarize: - The outcome variable is GHG emissions - The dependent Variable i
 
 ## 4.1 Data Cleansing Chart
 
-![Data Cleansing Chart](Poster%20Stuff/Copy%20of%20Data%20Cleansing%20Chart%20Corporate%20Sentiment.png)
+![Data Cleansing Chart](Poster%20Stuff/Copy%20of%20Data%20Cleansing%20Chart%20Corporate%20Sentiment%20(2).png)
 
 Only publicly traded companies are required to report 10-K statements. Thus, we parsed through each company in our EPA FLIGHT company list to generate tickers only for that companies were publicly traded and therefore have reported 10-K statements. From here we were able to then scrape the SEC EDGAR collect data and create a csv file containing the broken down 10-K statement’s sentences for each ticker-year. These csv files were then process through the BERT net zero reduction model to identify emission reduction sentences. Lastly we generate scores by computing ratio of reduction sentences to total sentences in the 10-K report and connected them to the quantity of GHG emissions for each year as reported on EPA FLIGHT database.
 
