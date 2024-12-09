@@ -1,5 +1,5 @@
 ---
-title: Do changes in environmental corporate sentiment  \n correlate with changes in GHG levels?
+title: Do changes in environmental corporate sentiment correlate with changes in GHG levels?
 format: gfm
 author: FIRE Sustainability Analytics - Joshua Hildebrand, Sohum Desai, Abhinav Akenapalli
 date: Fall 2024
