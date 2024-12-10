@@ -406,8 +406,9 @@ use this model, is we input a csv file of fragmented or whole sentences
 into this net zero reduction model and one by one the model will return
 a classification along with a confidence score which is our dependent
 variable. Thus, once the entire csv has been ran through the model a new
-csv with classifications and confidence scores has been produced. Now,
-we are able to draw conclusions and make claims regarding companies
+csv with classifications and confidence scores has been produced. 
+
+Now, we are able to draw conclusions and make claims regarding companies
 communications regarding net zero reduction and their actual greenhouse
 gas emissions. After the whole csv has been processed we can compare the
 sentences classified as reduction and compare that to the total number
