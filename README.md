@@ -345,7 +345,9 @@ zero reduction model. This model is a fine tuned version of the
 climateBERT model, and is able to classify if statements are either
 related to emission net zero or reduction targets (ChatClimate - About,
 n.d.). Thus, this model is an improved version of both the DistilRoBERT
-model as well as the original climateBERT model. Basically the way we
+model as well as the original climateBERT model. 
+
+Basically the way we
 use this model, is we input a csv file of fragmented or whole sentences
 into this net zero reduction model and one by one the model will return
 a classification along with a confidence score which is our dependent
@@ -358,7 +360,9 @@ sentences classified as reduction and compare that to the total number
 of sentences. This will then provide a ratio which we can compare with
 any company along with their greenhouse gas emissions. The most crucial
 part of this is that the ratio we calculate represent the fraction of
-sentences with net-zero commitments. An example sentence which was
+sentences with net-zero commitments. 
+
+An example sentence which was
 identified as net-zero is: “After reconsidering the arguments for the
 2018 final rule and finding them lacking, FHWA proposed to require State
 DOTs and MPOs that have NHS mileage within their State geographic
@@ -373,9 +377,34 @@ and Abroad”, and at the Leaders Summit on Climate.” The model
 successfully parsed through this sentence was trained to identify this
 as a sentence regarding net zero emissions.
 
-To summarize: - The outcome variable is GHG emissions - The dependent
-Variable is Corporate Sentiment score - The frequency is year and
-geographical unit is each company
+```
+# Process each text entry
+        for text in df['V1'].tolist():
+            try:
+                result = pipe_env(text)
+                sentiment.append(result)
+                classifications.append(result[0]['label'])
+            except Exception as e:
+                print(f"Error processing text in {path}: {str(e)}")
+                classifications.append("error")
+                sentiment.append(None)
+
+        # Create results DataFrame
+        df_results = pd.DataFrame({
+            'text': df['V1'].tolist(),
+            'classification': classifications
+        })
+
+```
+This code is where pass in each broken down statement into the ClimateBERT model. The model will then 
+complete its classification and append the result to the given statement. Should there be any error in classification, 
+the model will append error instead to indicate something went wrong in classification. Then, the results dataframe
+will be created storing all of the sentences along with their classifications. 
+
+To summarize: 
+- The outcome variable is GHG emissions
+- The dependent variable is Corporate Sentiment score
+- The frequency is year and geographical unit is each company
 
 # 4. Summary
 
