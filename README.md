@@ -66,7 +66,9 @@ gas emission data we have.
   appeared in the corporate filings data they collected and the second
   measure docs counted the number of documents per year that included
   two distinct environmental related n-grams. These measurements were
-  the foundation to the conclusions and claims of the study.
+  the foundation to the conclusions and claims of the study. To clarify, the last couple sentences are talking about
+  how Preuss & Max broke down their data to detect sentiment from annual reports, shareholder proposals,
+and press releases. These can then be inputted into the ClimateBERT model for detection and further analysis. 
 
 - Our research uses the zero-emissions BERT large language model created
   by (Bingler et al. 2024), to detect sentences with planned GHG
