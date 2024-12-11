@@ -66,7 +66,9 @@ gas emission data we have.
   appeared in the corporate filings data they collected and the second
   measure docs counted the number of documents per year that included
   two distinct environmental related n-grams. These measurements were
-  the foundation to the conclusions and claims of the study.
+  the foundation to the conclusions and claims of the study. To clarify, the last couple sentences are talking about
+  how Preuss & Max broke down their data to detect sentiment from annual reports, shareholder proposals,
+and press releases. These can then be inputted into the ClimateBERT model for detection and further analysis. 
 
 - Our research uses the zero-emissions BERT large language model created
   by (Bingler et al. 2024), to detect sentences with planned GHG
@@ -115,6 +117,60 @@ data will be used in our data. The final result is 100 companies that
 will be referenced in SEC EDGAR. Relating the GHG emissions from these
 companies from the past 13 years to corporate sentiment from SEC EDGAR
 10-K reports, a score can be determined for each company.
+
+The below code shows the process of merging the tickers from ChatGPT to
+the company names gathered from the EPA FLIGHT database. This begins with
+loading the csv files containing the tickers found through ChatGPT. This
+code ensures that all data points are strings in order to use string
+distance matching.
+``` r
+chat<-rbind(chatgpt_output, chatgpt_output2, chatgpt_output3) |>
+  filter(ticker!="N/A")
+library("stringi")
+flight.name<-as.data.frame(raw_flight$x)
+names(flight.name)<-"flight.name"
+chat.name<-chat$company
+chat.name <-stri_encode(chat.name, "","UTF-8")
+```
+The below code snippet utilizes string distance matching to properly
+merge the company names to tickers. We do this because some of the 
+company names given by ChatGPT corresponding to the tickers do not
+directly match the EPA FLIGHT company names.
+``` r
+flight_output <- c()
+for (i in 7033:dim(flight.name)[1]) {
+  print(i)
+  
+  distmatrix <- stringdist::stringdistmatrix(flight.name[i,1], 
+                                             chat.name[1:2578], 
+                                             method = 'lcs', p = 0.1)
+  
+  best_fit <- apply(distmatrix, 1, which.min)
+  similarity <- apply(distmatrix, 1, min)
+  output<-as.data.frame(cbind(flight.name[i,1], 
+                              chat.name[best_fit], 
+                              round(similarity,3)))
+  flight_output<-rbind(flight_output, output)
+}
+```
+The data was then filtered to strings that were exact matches (V3 == 0).
+This data was then merged with the EPA FLIGHT database to get the matched
+output dataframe.
+``` r
+install.packages("plyr")
+library("plyr")
+df<-read.csv("match_flight1.csv")
+f<-as.data.frame(rbind.fill(df, flight_output)) |>
+  filter(V3==0) |>
+  dplyr::select(V1, V2)
+names(f)<-c("flight", "company")
+merged <- merge(f, chat, by = "company")
+tick<-unique(merged$ticker)
+write.csv(tick, "flight_tickers.csv", row.names=F)
+grouped_merge <- merged %>% 
+  group_by(ticker, year) %>%
+  summarize(GHG=sum(GHG))
+```
 
 ## 3.2 SEC EDGAR
 
@@ -343,20 +399,25 @@ zero reduction model. This model is a fine tuned version of the
 climateBERT model, and is able to classify if statements are either
 related to emission net zero or reduction targets (ChatClimate - About,
 n.d.). Thus, this model is an improved version of both the DistilRoBERT
-model as well as the original climateBERT model. Basically the way we
+model as well as the original climateBERT model. 
+
+Basically the way we
 use this model, is we input a csv file of fragmented or whole sentences
 into this net zero reduction model and one by one the model will return
 a classification along with a confidence score which is our dependent
 variable. Thus, once the entire csv has been ran through the model a new
-csv with classifications and confidence scores has been produced. Now,
-we are able to draw conclusions and make claims regarding companies
+csv with classifications and confidence scores has been produced. 
+
+Now, we are able to draw conclusions and make claims regarding companies
 communications regarding net zero reduction and their actual greenhouse
 gas emissions. After the whole csv has been processed we can compare the
 sentences classified as reduction and compare that to the total number
 of sentences. This will then provide a ratio which we can compare with
 any company along with their greenhouse gas emissions. The most crucial
 part of this is that the ratio we calculate represent the fraction of
-sentences with net-zero commitments. An example sentence which was
+sentences with net-zero commitments. 
+
+An example sentence which was
 identified as net-zero is: “After reconsidering the arguments for the
 2018 final rule and finding them lacking, FHWA proposed to require State
 DOTs and MPOs that have NHS mileage within their State geographic
@@ -371,9 +432,34 @@ and Abroad”, and at the Leaders Summit on Climate.” The model
 successfully parsed through this sentence was trained to identify this
 as a sentence regarding net zero emissions.
 
-To summarize: - The outcome variable is GHG emissions - The dependent
-Variable is Corporate Sentiment score - The frequency is year and
-geographical unit is each company
+```
+# Process each text entry
+        for text in df['V1'].tolist():
+            try:
+                result = pipe_env(text)
+                sentiment.append(result)
+                classifications.append(result[0]['label'])
+            except Exception as e:
+                print(f"Error processing text in {path}: {str(e)}")
+                classifications.append("error")
+                sentiment.append(None)
+
+        # Create results DataFrame
+        df_results = pd.DataFrame({
+            'text': df['V1'].tolist(),
+            'classification': classifications
+        })
+
+```
+This code is where pass in each broken down statement into the ClimateBERT model. The model will then 
+complete its classification and append the result to the given statement. Should there be any error in classification, 
+the model will append error instead to indicate something went wrong in classification. Then, the results dataframe
+will be created storing all of the sentences along with their classifications. 
+
+To summarize: 
+- The outcome variable is GHG emissions
+- The dependent variable is Corporate Sentiment score
+- The frequency is year and geographical unit is each company
 
 # 4. Summary
 
