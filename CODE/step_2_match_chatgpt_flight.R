@@ -72,6 +72,8 @@ write.csv(flight_output, "OUTPUT/step_2_match_flight.csv")
 
 #match companies with tickers
 
+flight_output<-read.csv("OUTPUT/step_2_match_flight.csv")
+
 f2<-flight_output |>
   filter(V3<=1) |>
   rename(chat_match_name=V2) |>
@@ -147,9 +149,10 @@ m3<-merge(m2, flight_ghg, by="flight_company")
 m4<-m3 |>
   group_by(ticker, year) |>
   summarise(GHG=sum(GHG)) |>
+  filter(year>=2014 & year<=2022) |>
   group_by(ticker) |>
   mutate(yearcount=n()) |>
-  filter(yearcount==13)
+  filter(yearcount==9)
 
 #get companies full name (495 companies that matched flight and ticker)
 m5<-m3 |>
