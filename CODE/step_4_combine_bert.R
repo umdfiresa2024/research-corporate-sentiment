@@ -3,8 +3,10 @@ library("tidyverse")
 path<-"G:/Shared drives/2024 FIRE-SA/DATA/ProcessedCSV/FIRE298/"
 folders<-dir(path)
 
+df<-read.csv("OUTPUT/step_4_bert.csv")
+
 bertall<-c()
-for (f in 1:11) {
+for (f in 12:13) {
   print(f)
   file_list<-dir(paste0(path, folders[f]))
   
@@ -27,4 +29,6 @@ for (f in 1:11) {
   bertall<-rbind(bertall, bert)
 }
 
+bert2<-rbind(df, bertall)
+write.csv(bert2, "OUTPUT/step_4_bert2.csv", row.names=F)
 write.csv(bertall, "OUTPUT/step_4_bert.csv", row.names=F)

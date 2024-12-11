@@ -145,7 +145,6 @@ flight_ghg<-read.csv("OUTPUT/step_1_flight_ghg.csv") |>
 
 m3<-merge(m2, flight_ghg, by="flight_company") 
 
-#188 unique companies that reported 13 years of data
 m4<-m3 |>
   group_by(ticker, year) |>
   summarise(GHG=sum(GHG)) |>
@@ -164,7 +163,7 @@ m5<-m3 |>
   group_by(ticker) |>
   mutate(id = row_number()) |>
   filter(id==1) |>
-  select(chat_company, ticker)
+  select(chat_company, ticker, flight_company)
 
 m6<-merge(m4, m5, by="ticker")
 
